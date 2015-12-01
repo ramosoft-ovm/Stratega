@@ -1,0 +1,14 @@
+{
+    "lib": {
+        "www": {
+            "id": "phonegap",
+            "version": "3.0.0",
+            "uri": "https://github.com/phonegap/phonegap-app-hello-world/archive/3.0.0.tar.gz"
+        }
+    },
+    "id": "com.ramosoft.vbcStratega",
+    "name": "Oficina Virtual Movil",
+    "phonegap": {
+        "id": 1718419
+    }
+}

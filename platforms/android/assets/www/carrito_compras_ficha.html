@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleCarritoCompras.css">
+
+        <title>Levantar pedido</title>
+        <script type="text/javascript" src="js/connect.js"></script>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                var serialNumber = getByURL()['serialNumber'];
+                if (serialNumber == '') {
+                    document.getElementById('serials').style.display = "none";
+                }
+
+                //document.getElementById('logBBVA').src = domain+"/image/BANCOMER.gif";
+                document.getElementById('numOrden').innerHTML = getByURL()['numOrden'];
+                document.getElementById('nombre').innerHTML = getByURL()['nombre'];
+                document.getElementById('importe').innerHTML = getByURL()['granTotal'];
+                document.getElementById('referencia').innerHTML = getByURL()['reference'];
+            }, false);
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <h2><span class="icon-credit-card"></span> Envío de Orden</h2>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"><span class="icon-menu"></span> Menu</a>
+                </div><!--end menu_bar-->
+            </div><!--end encabezado-->
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <div id="levantar">
+
+                    <div class="notas">
+                        <p>Gracias <span id="nombre"><!-- Desde la base --></span>, por hacer sus compras en SmartNetworks</p>
+                        <p>Te informamos que tu orden de compra ha sido recibida exitosamente, se está procesando y dependiendo de la forma de pago las órdenes se enviarán máximo dentro de un plazo de 72 horas siguientes a la confirmación del pago.</p>
+                        <p>Si requieres de alguna información adicional sobre el status de tu orden, envía un e-mail a info@smartnetworks.com.mx. ó bien comunícate al 01 800 000 0000 si llamas del área metropolitana de la Cd. de México ó al 01 800 000 0000 del interior de la república, en horario de 9:00 a 19:00 de lunes a viernes. Para brindarte un óptimo servicio, deberás tener el número de orden incluido en este documento.</p>
+                    </div>
+                    <div >
+                        <table>
+                            <tr>
+                                <th width="30%">No. de orden: </th>
+                                <td id="numOrden" style="font-weight:bold"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="catalogo" style="padding-top: 10px">
+     
+                        <p></p>
+                        <table>
+                            <thead>
+                                <th colspan="2">Ficha</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th width="30%">Cuenta</th>
+                                    <td width="70">11006455735</td>
+                                </tr>
+                                <tr>
+                                    <th>Banco</th>
+                                    <td>SCOTIABANK</td>
+                                </tr>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <td>STRATEGA SOLUCIONES DE MERCADO S.A. DE C.V.</td>
+                                </tr>
+                                <tr>
+                                    <th>Moneda</th>
+                                    <td>M.N.</td>
+                                </tr>
+                                <tr>
+                                    <th>Importe</th>
+                                    <td id="importe"></td>
+                                </tr>
+                                <tr>
+                                    <th>Referencia</th>
+                                    <td id="referencia"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding-bottom: 15px; padding-top: 10px; text-align:center">
+                        <a href="#" class="cancelar btn"><span class="icon-checkmark icon"><!-- Desde la base --></span> Cerrar</a>
+                    </div>
+                </div>
+
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+
+    <div id="deviceready" style="display: none">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+    
+    <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+    <section id="mascara"></section>
+    <script type="text/javascript" src="js/carrito_compras.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+    </script>
+    </body>
+</html>

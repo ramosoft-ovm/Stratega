@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <link rel="stylesheet" href="css/styleSuscriptores.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Inscripciones</title>
+
+    </head>
+    <body>
+
+        <!-- Inicia Página -->
+        <div id="inscripciones">
+
+        <!-- Encabezado de la página -->
+        <div class="encabezado">
+            <div>
+                <div class="back_bar">
+                    <a href="suscriptores4.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+            <h2><span class="icon-user-check"></span> Confirmación de Inscripción</h2>
+            <div>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+        </div>
+
+        <!-- Contenido de la página-->
+        <div id="contenedor" style="overflow-x: auto;">
+            
+            <div id="clear" >
+                
+                <form action="#" id="inscripcion" name="inscripcion">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <p style="font-size:.9em; text-align:justify">Por favor revise su información, si hay algo que desee cambiar presione el botón ANTERIOR para ir a la ventana correspondiente.</p>
+                                    <p style="font-size:.9em; text-align:justify">Puede navegar hacia adelante y atrás usando los botones de ANTERIOR y SIGUIENTE.</p>
+                                </td>
+                            </tr>
+                        </thead>
+                         <tbody>
+                           <tr>
+                             <th>Nombre:</th>
+                             <td>
+                                 <label for="Nombre" id="lblNombre"></label>
+                             </td>
+                           </tr>
+                           <tr>
+                             <th>Teléfono de Contacto:</th>
+                             <td>
+                                <label for="Telefono" id="lblTelefono"></label>
+                            </td>                                                   
+                           </tr>
+                            <tr>
+                                <th>Correo Electrónico:</th>
+                                <td>
+                                    <label for="Email" id="lblEmail"></label>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Dirección Fiscal:</th>
+                                <td id="tdEstado">
+                                    <label for="Calle" id="lblCalle"></label><br>
+                                    <label for="Colonia" id="lblColonia"></label><br>
+                                    <label for="Ciudad" id="lblCiudad"></label><br>
+                                    <select class="select" name="estado" id="estado" disabled>
+                                    </select><br>
+                                    <label for="CP" id="lblCP"></label><br>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Número y Nombre de Patrocinador:</th>
+                                <td>
+                                    <label for="Patrocinador" id="lblPatrocinador"></label>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Colocado Debajo de:</th>
+                                <td>
+                                    <label for="Colocacion" id="lblColocacion"></label>
+                                </td>    
+                            </tr> 
+                            <tr>
+                                <td colspan="2" style="height:10px;background:#ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background:#ffffff">
+                                    <a class="btn" href="#" onclick="Href('suscriptores4.html')"><span class="icon-arrow-left icon"></span> ANTERIOR</a>
+                                    <!--<a href="suscriptores3.html"   data-role="button">SIGUIENTE -></a>-->
+                                    <a class="btn" id="btnSiguiente5" name="btnSiguiente5">TERMINAR <span class='icon-point-right icon-right'></span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="height:10px;background:#ffffff"></td>
+                            </tr>
+                         </tbody>
+                   </table>
+                </form>
+
+                <table id="order">
+                    <thead>
+                        <tr>
+                            <th colspan="3">ORDEN DE INSCRIPCIÓN</th>
+                        </tr>
+                        <tr>
+                            <th>Código Artículo</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Subtotal: </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Cargo por envío: </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Impuesto Total: </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Total: </th>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+
+    </div>
+    
+   <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+    
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>    
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    
+    <script type="text/javascript" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMail.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //Se declara IVA como constante
+            const IVA = 0.16;
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+
+            //Borra Historial del Botón back
+            if(history.forward(1))
+                location.replace(history.forward(1));
+
+            /*Devuelve conjunto de datos y carga SELECT de ESTADOS con los datos obtenidos*/
+            queryData('USP_VBC_GET_STATES', ['integer', '4'], fillStates);
+
+            function fillStates(dataSet){
+                var rec = dataSet[0];
+                var text = '';
+
+                for(var idx = 0; idx < dataSet.length; idx++){
+                    rec = dataSet[idx];
+                    text += '<option value="'+ rec["stateCode"] +'">'+ rec["state"] +'</option>';
+                };
+
+                $('#estado').append(text);
+
+                var extraer = localStorage.getItem('susc3Local');
+                var ResArray = extraer.split('","');
+
+                $('#estado').val(ResArray[6]);
+            }
+
+
+            //Se obtiene código de producto que solicito usuario para extraer sus detalles
+            if(localStorage.getItem('susc2Local')){
+                var extraer = localStorage.getItem('susc2Local');
+                var ResArray = extraer.split('","');
+
+                var kit_code = ResArray[12];
+                var shipping_method;
+                //Bandera para saber si es valido el código del serializable
+                var serial_code_flag;
+
+                if(ResArray.length == 18){
+                    shipping_method = ResArray[15];
+                    serial_code_flag = ResArray[13];
+                }else{
+                    shipping_method = ResArray[13];
+                    serial_code_flag = 'scNo';
+                }
+            }
+
+            //========================================================================================================//
+            //Se verifica si el paquete de inscripción fue serializaco o no, para realizar sus respectivas operaciones//
+            //========================================================================================================//
+            
+            if(serial_code_flag == 'scNo'){//===Se llena la tabla de forma normal porque no se ingreso un código serializable===//
+
+                /*Devuelve conjunto de datos y llena datos de la orden*/
+                queryData('USP_VBC_GET_ITEMS_KITS', ['integer', '4'], fillTableOrder);
+
+                function fillTableOrder(dataSet){
+                    var rec = dataSet[0];
+                    var text = '';
+
+                    for(var idx = 0; idx < dataSet.length; idx++){
+                        rec = dataSet[idx];
+
+                        //SE CREAN DATOS DEL KIT DE INICIO(SÓLO STRATEGA)
+                        var initKitCode = 'KIT-01';
+                        var initKitDescription = 'Kit de Inicio';
+                        var initKitPrice = (400).toFixed(2);
+                        var initKitWeight = (0).toFixed(2);
+                        var initKitVolume = (0).toFixed(2);
+                        var initKitCommValue = (0).toFixed(2);
+                        var initKitIsKit = '<KIT_ITEMS><ITEM ITEM_CODE="CLM-01" QUANTITY="1"/><ITEM ITEM_CODE="CPN-01" QUANTITY="1"/><ITEM ITEM_CODE="ML-01" QUANTITY="1"/><ITEM ITEM_CODE="PL-01" QUANTITY="1"/><ITEM ITEM_CODE="TM-01" QUANTITY="1"/><ITEM ITEM_CODE="TRP-01" QUANTITY="10"/><ITEM ITEM_CODE="USB-01" QUANTITY="1"/></KIT_ITEMS>'; 
+
+                        if(rec['itemCode'] == kit_code){
+                            text += '<tr>';
+                            text += '<td>'+ rec['itemCode'] +'</td>';
+                            text += '<td>'+ rec['description'] +'</td>';
+                            text += '<td>$ '+ (Math.round(rec['retail'])).toFixed(2) +'</td>';
+                            text += '</tr>';
+                            //SE AÑADE KIT DE INICIO
+                            text += '<tr>';
+                            text += '<td>'+ initKitCode +'</td>';
+                            text += '<td>'+ initKitDescription +'</td>';
+                            text += '<td>$ '+ initKitPrice +'</td>';
+                            text += '</tr>';
+
+                            var kit_price = (Math.round(rec['retail'])).toFixed(2);
+                            var kit_weight = rec['weight'];
+
+                            //Se almacena en una variable local los datos del Producto
+                            var itemCode = rec['itemCode'];
+                            var description = rec['description'];
+                            var itemPrice = (Math.round(rec['retail'])).toFixed(2);
+                            var itemWeight = rec['weight'];
+                            var volume = rec['volume'];
+                            var comm_value = rec['commValue'];
+                            var isKit = rec['isKit'];
+                            var cadena = '';
+
+                            cadena += itemCode + "\",";
+                            cadena += "\"" + description + "\",";
+                            cadena += "\"" + itemPrice + "\",";
+                            cadena += "\"" + itemWeight + "\",";
+                            cadena += "\"" + volume + "\",";
+                            cadena += "\"" + comm_value + "\",";
+                            cadena += "\"" + isKit + "\",";
+                            cadena += "\"" + initKitCode + "\",";
+                            cadena += "\"" + initKitDescription + "\",";
+                            cadena += "\"" + initKitPrice + "\",";
+                            cadena += "\"" + initKitWeight + "\",";
+                            cadena += "\"" + initKitVolume + "\",";
+                            cadena += "\"" + initKitCommValue + "\",";
+                            cadena += "\"" + initKitIsKit;
+
+                            localStorage.setItem('susc5Local', cadena);
+
+                            //VARIABLES GENERALES PARA SUBTOTALES Y COSTO POR ENVÍO
+                            var subtotal = parseFloat(initKitPrice) + parseFloat(itemPrice); subtotal = (subtotal).toFixed(2);
+                            var totalWeight = parseFloat(initKitWeight) + parseFloat(itemWeight);
+                        }
+                        
+                    };
+
+                    //Se cargan datos obtenidos en la tabla de la Orden
+                    $('table#order tbody').prepend(text);
+                    $('table#order tbody tr:nth-child(3) td').append('$ '+subtotal);
+
+                    //Se calcula costo de envío
+                    var xml = '<PAGE><CART GRAN_TOTAL_ITEM_WEIGHT="'+ totalWeight +'" COUNTRY_ID="4"/><SHIPPING_ADDRES SHIPPING_METHOD="'+ shipping_method +'" CARRIER="3"/></PAGE>';
+                    queryData('USP_VBC_GET_SHIPPING_COST', ['string',depurarXML(xml)], calculaEnvio);
+                    var costoXenvio = 0;
+                    function calculaEnvio(dataSet) {
+                        
+                        var rec = dataSet[0];
+                        //Si el metodo de envío es Ocurre no se cobra costo por envío
+                        if(rec['shippingCharge'] == null){
+                            $('table#order tbody tr:nth-child(4) td').append('$ '+(0).toFixed(2));
+                        }else{
+                            $('table#order tbody tr:nth-child(4) td').append('$ '+(rec['shippingCharge']).toFixed(2));
+                        }                    
+                        costoXenvio = rec['shippingCharge'];
+
+                        //Una vez que se obtiene el costo por envío hacemos los calculos totales
+                        var impuesto_total = subtotal * IVA;
+                        var gran_total = parseFloat(impuesto_total) + parseFloat(costoXenvio) + parseFloat(subtotal);
+                        //var gran_total = total.toFixed(2);
+
+                        $('table#order tbody tr:nth-child(5) td').append('$ '+Math.round(impuesto_total*100)/100);
+                        $('table#order tbody tr:nth-child(6) td').append('$ '+Math.round(gran_total*Math.pow(10,2))/Math.pow(10,2));
+                    }
+
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+
+                }
+            }else if(serial_code_flag == 'sc0' || serial_code_flag == 'sc1' || serial_code_flag == 'sc2' || 
+                        serial_code_flag == 'sc3' || serial_code_flag == 'sc4'){//======Sí entramos aquí es porque sí se ingrésó un Código serializable=======//
+
+                /*Devuelve conjunto de datos y llena datos de la orden*/
+                queryData('USP_VBC_GET_ITEMS_KITS', ['integer', '4'], fillTableOrder2);
+
+                function fillTableOrder2(dataSet){
+                    var rec = dataSet[0];
+                    var text = '';
+
+                    for(var idx = 0; idx < dataSet.length; idx++){
+                        rec = dataSet[idx];
+
+                        if(rec['itemCode'] == kit_code){console.log(rec);
+                            text += '<tr>';
+                            text += '<td>'+ rec['itemCode'] +'</td>';
+                            text += '<td>'+ rec['description'] +'</td>';
+                            text += '<td>$ '+ (0).toFixed(2) +'</td>';
+                            text += '</tr>';
+
+                            //Se almacena en una variable local los datos del producto
+                            var itemCode = rec['itemCode'];
+                            var description = rec['description'];
+                            var itemPrice = (0).toFixed(2);
+                            var itemWeight = (0).toFixed(2);
+                            var volume = rec['volume'];
+                            var comm_value = rec['commValue'];
+                            var cadena = '';
+
+                            cadena += itemCode + "\",";
+                            cadena += "\"" + description + "\",";
+                            cadena += "\"" + itemPrice + "\",";
+                            cadena += "\"" + itemWeight + "\",";
+                            cadena += "\"" + volume + "\",";
+                            cadena += "\"" + comm_value;
+
+                            localStorage.setItem('susc5Local', cadena);
+                        }
+                        
+                    };
+
+                    //Se cargan datos obtenidos en la tabla de la Orden
+                    $('table#order tbody').prepend(text);
+
+                    //Se cargan todos los valores con valor de 0.00, ya que se ingresó un Código de Autorización
+                    $('table#order tbody tr:nth-child(2) td').append('$ '+(0).toFixed(2));                    
+                    $('table#order tbody tr:nth-child(3) td').append('$ '+(0).toFixed(2));
+                    $('table#order tbody tr:nth-child(4) td').append('$ '+(0).toFixed(2));
+                    $('table#order tbody tr:nth-child(5) td').append('$ '+(0).toFixed(2));
+            
+
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+
+                }
+            }
+
+
+            //=========================================================================//
+            //                                                                         //
+            //===================COMIENZA PROCESO DE INSCRIPCIÓN=======================//
+            //                                                                         //
+            //=========================================================================//
+
+            //Se ejecuta cuando se presiona el botón Terminar
+            $('#btnSiguiente5').click(function(event) {
+
+                //Se extrae el id de usuario que está almacenado localmente
+                var userId = localStorage.getItem('userIdLocal');                
+                //userId = 37;
+                //Se extraen los datos de la inscripción almacenados localmente
+                var extraer1 = localStorage.getItem('susc1Local');
+                var extraer2 = localStorage.getItem('susc2Local');
+                var extraer3 = localStorage.getItem('susc3Local');
+                var extraer4 = localStorage.getItem('susc4Local');
+                var extraer5 = localStorage.getItem('susc5Local');
+                //se convierte la cadena en array
+                var resArr1 = extraer1.split('","');
+                var resArr2 = extraer2.split('","');
+                var resArr3 = extraer3.split('","');
+                var resArr4 = extraer4.split('","');
+                var resArr5 = extraer5.split('","');
+                //Se asignan valores del arreglo #1 a variables independientes
+                var lenguaje = resArr1[0];
+                var numPatrocinador = resArr1[1];
+                var nomPatrocinador = resArr1[2];
+                //Se asginan valores del arreglo #2 a variables indepentientes
+                var flagSerialCode;
+
+                var rfc = resArr2[0];
+                var curp = resArr2[1];
+                var nombre = resArr2[2];
+                var apePat = resArr2[3];
+                var apeMat = resArr2[4];
+                var dia = resArr2[5];
+                var mes = resArr2[6];
+                var ano = resArr2[7];
+                var lugarNacimiento = resArr2[8];
+                var sexo = resArr2[9];
+                var telefono = resArr2[10];
+                var email = resArr2[11];
+                var kit = resArr2[12];
+                if(resArr2.length == 18){
+                    flagSerialCode = resArr2[13];
+                    var serialCode = resArr2[14];
+                    var metodoEnvio = resArr2[15];
+                    if(metodoEnvio == 1){
+                        var centroAutorizado = resArr2[16];
+                        var paqueteria = '';
+                    }else if(metodoEnvio == 2){
+                        var centroAutorizado = '';
+                        var paqueteria = resArr2[16];
+                    }
+                    var metodoPago = resArr2[17];
+                }else{
+                    flagSerialCode = 'scNo';
+                    var serialCode = '';
+                    var metodoEnvio = resArr2[13];
+                    if(metodoEnvio == 1){
+                        var centroAutorizado = resArr2[14];
+                        var paqueteria = '';
+                    }else if(metodoEnvio == 2){
+                        var centroAutorizado = '';
+                        var paqueteria = resArr2[14];
+                    }
+                    var metodoPago = resArr2[15];
+                }
+                //Se asignan valores del arreglo #3 a variables independientes
+                var paisFiscal = resArr3[0];
+                var calleFiscal = resArr3[1];
+                var numExtFiscal = resArr3[2];
+                var numIntFiscal = resArr3[3];
+                var coloniaFiscal = resArr3[4];
+                var ciudadFiscal = resArr3[5];
+                var estadoFiscal = resArr3[6];
+                var cpFiscal = resArr3[7];
+                var cbMismaDir = resArr3[8];
+
+                var paisPedidos = '';
+                var callePedidos = '';
+                var numExtPedidos = '';
+                var numIntPedidos = '';
+                var coloniaPedidos = '';
+                var ciudadPedidos = '';
+                var estadoPedidos = '';
+                var cpPedidos  = '';
+
+                if(cbMismaDir == 1){
+                    paisPedidos = paisFiscal;
+                    callePedidos = calleFiscal;
+                    numExtPedidos = numExtFiscal;
+                    numIntPedidos = numIntFiscal;
+                    coloniaPedidos = coloniaFiscal;
+                    ciudadPedidos = ciudadFiscal;
+                    estadoPedidos = estadoFiscal;
+                    cpPedidos = cpFiscal;                
+                }
+                //Se asignan valores del arreglo #4 a variables independientes
+                var alias = resArr4[0];
+                var password = resArr4[1];
+                //Se asignan valores del arreglo #5 a variables independientes
+                var itemCode = resArr5[0];
+                var description = resArr5[1];
+                var itemPrice = resArr5[2];
+                var itemWeight = resArr5[3];
+                var volume = resArr5[4];
+                var comm_value = resArr5[5];
+                var isKit = resArr5[6];
+                var initKitCode = resArr5[7];
+                var initKitDescription = resArr5[8];
+                var initKitPrice = resArr5[9];
+                var initKitWeight = resArr5[10]
+                var initKitVolume = resArr5[11];
+                var initKitCommValue = resArr5[12];
+                var initKitIsKit = resArr5[13];
+                //Se crea XML auxiliar para datos de beneficiario
+                var beneficiaryXML = '<PAGE>'+
+                    '<PER_INFO FIRST_NAME_BENEFICIARY="" MIDDLE_NAME_BENEFICIARY="" LAST_NAME_BENEFICIARY="" CO_BIRTH_DAY="01" CO_BIRTH_MONTH="01" CO_BIRTH_YEAR="1900" BENEFICIARY_PHONE="" CO_EMAIL="" CO_SKYPE="" BENEFICIARY_CELL_PHONE="" />'+
+                        '<BENEFICIARIES>'+
+                            '<BENEFICIARY B_FIRST_NAME="" B_MIDDLE_NAME="" B_LAST_NAME="" B_SEX="" B_BIRTH_DAY="01" B_BIRTH_MONTH="01" B_BIRTH_YEAR="1900" B_EMAIL="" B_FACEBOOK="" />'+
+                        '</BENEFICIARIES>'+
+                    '</PAGE>'; 
+
+                //============================================================//
+                //Se crea arreglo con los datos necesarios para la inscripción//
+                //============================================================//
+                var argsInscription = [
+                'integer', userId,//Número de patrocinador
+                'integer', userId,//Número de patrocinador
+                'integer', '1',//Tipo de Usuario 'RIR'
+                'string', nombre+', '+apePat+' '+apeMat,//Nombre completo 
+                'string', '',//Coapplicant
+                'string', '',//Compañía
+                'string', rfc,//RFC
+                'string', telefono,//Teléfono principal
+                'string', '',//Teléfono 2
+                'string', '',//Teléfono 3
+                'string', '',//Fax
+                'string', '',//Teléfono 4
+                'string', '',//Pager
+                'string', email,//Email
+                'string', alias,//Alias
+                'string', password,//Contraseña
+                'string', '4',//País Fiscal
+                'string', calleFiscal,//Calle Fiscal
+                'string', coloniaFiscal,//Colonia Fiscal
+                'string', '',//Calle Principal Fiscal
+                'string', ciudadFiscal,//Ciudad Fiscal
+                'string', estadoFiscal,//Estado Fiscal
+                'string', cpFiscal,//Código Postal Fiscal
+                'integer', cbMismaDir,//Misma dirección para Pedidos
+                'string', '4',//País Pedidos
+                'string', callePedidos,//Calle Pedidos
+                'string', coloniaPedidos,//Colonia Pedidos
+                'string', '',//Calle Principal Pedidos
+                'string', ciudadPedidos,//Ciudad Pedidos
+                'string', estadoPedidos,//Estado Pedidos
+                'string', cpPedidos,//Código Postal Pedidos
+                'string', ano+'-'+mes+'-'+dia,//Fecha de Nacimiento
+                'string', userId,//Número de Patrocinador
+                'integer', '',//Periodo de Inscripción
+                'integer', lenguaje,//Lenguaje de Patrocinador
+                'integer', '',//Número de Nuevo RIR
+                'string', '',//Custom Data
+                'integer', '',//Patrocinador internacional
+                'string', nombre+', '+apePat+' '+apeMat,//Nombreo completo para envíos
+                'string', nombre,//Nombre envíos
+                'string', apePat,//Apellido Paterno envíos
+                'string', apeMat,//Apellido Materno envíos
+                'integer', centroAutorizado,//Centro Autorizado
+                'string', '',//Número de Contrato
+                'string', '',//Número de Cuenta
+                'string', '',//Banco
+                'string', '',//Número de IFE
+                'string', curp,//CURP
+                'string', '',//Nombre Beneficiario
+                'string', '',//Apellido Paterno Beneficiario
+                'string', '',//Apellido Materno Beneficiario
+                'integer', '',//Relación con el Beneficiario
+                'string', '',//Otro banco
+                'integer', '',//Is invoice
+                'string', '',//Teléfono de Beneficiario
+                'integer', sexo,//Sexo
+                'string', lugarNacimiento,//Lugar de Nacimiento
+                'string', numExtFiscal,//Número exterior Fiscal
+                'string', numIntFiscal,//Número Interior Fiscal
+                'integer', '0',//Modal Type
+                'string', '',//Skype
+                'string', numExtPedidos,//Número exterior Pedidos
+                'string', numIntPedidos,//Número interior Pedidos
+                'string', '',//Actividad Fiscal
+                'string', depurarXML(beneficiaryXML) //XML auxiliar con datos del beneficiario
+                ];
+                //===============================================//
+                //Termina creación de arreglo para la inscripción//
+                //===============================================//
+
+                //Carga imagen ajax
+                showWaitLoader('mascaraAJAX');
+                $('#mascaraAJAX').fadeIn(300);
+
+                //Entramos aquí siempre y cuando no sea un kit serializable
+                if(flagSerialCode == 'scNo'){
+                    //Se verifica el método de Pago que se seleccionó
+                    if(metodoPago == 7){//Sí se seleccionó DEPÓSITO
+
+                        ///////////////////////////////////////////////////////
+                        /************* Obtiene el ID de la Orden *************/
+                        queryData('USP_VBC_GET_ORDER_ID', [], getOrderID);
+                        function getOrderID(dataSet) {
+                            var rec = dataSet[0];
+                            var numOrden = rec['orderId'];  console.log('Estamos en SCnO: '+rec);                         
+                            
+                            //////////////////////////////////////////////////////
+                            /*************** Inserta Nuevo Usario ***************/
+                            queryData('USP_VBC_SET_USER', argsInscription, storeUser);
+                            function storeUser(dataSet2) {
+                                var rec2 = dataSet2[0]; console.log(rec2);
+
+                                //El procedimiento USP_VBC_SET_USER nos envía como respuesta los nuevos datos del Usuario
+                                var newUserId = rec2['newUserid'];
+                                var newUserAlias = rec2['userAlias'];
+                                var newUserPassword = rec2['password'];console.log(newUserId+' '+newUserAlias+' '+newUserPassword);
+                                //Extraemos los subtotales y totales de la orden
+                                var subtotalPrev = $('table#order tbody tr:nth-child(3) td').text();
+                                var subtotal = subtotalPrev.substr(2, subtotalPrev.length);
+                                var montoPorEnvioPrev = $('table#order tbody tr:nth-child(4) td').text();
+                                var montoPorEnvio = montoPorEnvioPrev.substr(2, montoPorEnvioPrev.length);
+                                var impuestoTotalPrev = $('table#order tbody tr:nth-child(5) td').text();
+                                var impuestoTotal = impuestoTotalPrev.substr(2, impuestoTotalPrev.length);
+                                var granTotalPrev = $('table#order tbody tr:nth-child(6) td').text();
+                                var granTotal = granTotalPrev.substr(2, granTotalPrev.length);
+
+                                console.log('Inserción lista');
+
+                                //====================================================//
+                                //Se crea XML con los datos de la órden a ser enviados//
+                                //====================================================//
+                                var items = '';
+                                items += '<ITEM ITEM_CODE="'+itemCode+'" QUANTITY="1" ITEM_PRICE="'+itemPrice+'" TOTAL_ITEM_PRICE="'+itemPrice+'" TOTAL_ITEM_PV="'+volume+'" TOTAL_ITEM_CV="'+comm_value+'" VOLUME_TYPE_ID="4" IS_KIT="'+isKit+'" PRICE_LEVEL_ID="1" ITEM_SUBGROUP_ID="2" />';
+                                items += '<ITEM ITEM_CODE="'+initKitCode+'" QUANTITY="1" ITEM_PRICE="'+initKitPrice+'" TOTAL_ITEM_PRICE="'+initKitPrice+'" TOTAL_ITEM_PV="'+initKitVolume+'" TOTAL_ITEM_CV="'+initKitCommValue+'" VOLUME_TYPE_ID="4" PRICE_LEVEL_ID="1" ITEM_SUBGROUP_ID="2" />';
+
+
+                                var setXmlOrderNew = '<PAGE PRICE_LEVEL_ID="1" NEW_ORDER_ID="0" ORDER_TYPE_ID="4">'+
+                                '<REFER_SPON SPON_ID="'+userId+'" />'+
+                                '<PER_INFO FOLIO_KIT="'+serialCode+'" SHIPPING_METHOD="'+metodoEnvio+'" CELL_PHONE="" CARRIER="'+paqueteria+'" WAREHOUSE_ID="'+centroAutorizado+'" WAREHOUSE="'+centroAutorizado+'" />'+
+                                '<ORDER_INFO PAYMENT_METHOD="7" SPECIAL_INSTRUCTIONS="" />'+
+                                '<PAYMENTS><PAYMENT AMOUNT="'+granTotal+'" TYPE="7"/></PAYMENTS>  '+
+                                '<PAYMENT_INFO REFERENCE_CARD="" LAST_DIGITS_CARD="" AutCode="" RefCode="" />'+
+                                '<MULTI_TAXS_INFO>'+
+                                '<MULTI_TAX_INFO TAX_TYPE="1" TAX_PERCENTAGE="16" BASE_TAXABLE="'+subtotal+'" AMMOUNT="'+impuestoTotal+'" />'+
+                                '</MULTI_TAXS_INFO>'+
+                                '<CART USE_BALANCE="0" BALANCE="" PAYMENT_METHOD="'+metodoPago+'" GRAN_TOTAL_ITEM_PV="'+volume+'" GRAN_TOTAL_ITEM_CV="'+comm_value+'" GRAN_TOTAL_NETO="'+granTotal+'" HANDLING_AMOUNT="0.00" SHIPPING_AMOUNT="'+montoPorEnvio+'" TAXES="'+impuestoTotal+'" OPERATOR="'+userId+'" SOURCE_ID="1" REGISTER_PAYMENT="0" REFERENCE="" PAYMENT_AMOUNT="" AMOUNT_TPV="0.00">'+items+
+                                '</CART>'+
+                                '<MAIL_SHIPPING SHIPPING_NAME="'+nombre+', '+apePat+' '+apeMat+'" COUNTRY_ID="4" SHIPPING_ADDRESS_1="'+callePedidos+'" SHIPPING_ADDRESS_NUM_EXT="'+numExtPedidos+'" SHIPPING_ADDRESS_NUM_INT="'+numIntPedidos+'" SHIPPING_ADDRESS_2="'+coloniaPedidos+'" SHIPPING_CITY="'+ciudadPedidos+'" SHIPPING_STATE="'+estadoPedidos+'" SHIPPING_POSTAL_CODE="'+cpPedidos+'"  />'+
+                                '<NEW_MEMBER NEW_ID="'+newUserId+'"/>'+
+                                '</PAGE>'; 
+
+                                setXmlOrderNew = depurarXML(setXmlOrderNew);console.log(setXmlOrderNew);
+                                //====================================================//
+                                //Termina la creación del XML para insertar el Pedido //
+                                //====================================================//
+
+
+                                /////////////////////////////////////////////////////////////////////////////////////////
+                                /*************** Inserta la Orden que se genera con la nueva inscripción ***************/
+                                queryData('USP_VBC_SET_ORDER_XML_NEW', ['string',setXmlOrderNew], storeOrder);
+                                function storeOrder(dataSet3) {
+                                    var rec3 = dataSet3[0]; console.log(rec3);
+
+                                    var newSponsorName = nombre+', '+apePat+' '+apeMat;
+                                    var newSponsorEmail = email;
+                                    var newUserOrderId = rec['orderId'];
+
+                                    var totalPuntos = parseInt(volume, 10) + parseInt(initKitVolume, 10);
+
+                                    var newUserOrderDetails = {
+                                        "itemCode" : itemCode,
+                                        "description" : description,
+                                        "volume" : volume,
+                                        "itemPrice" : itemPrice,
+                                        "initKitCode" : initKitCode,
+                                        "initKitDescription" : initKitDescription,
+                                        "initKitVolume" : initKitVolume,
+                                        "initKitPrice" : initKitPrice,
+                                        "subtotal" : subtotal,
+                                        "montoPorEnvio" : montoPorEnvio,
+                                        "impuestoTotal" : impuestoTotal,
+                                        "granTotal" : granTotal,
+                                        "reference" : rec3['reference'],
+                                        "totalPuntos" : totalPuntos
+                                    };
+
+                                    var mail = new Mail(newSponsorName, newUserId, newSponsorEmail, newUserAlias, newUserPassword, newUserOrderId, newUserOrderDetails);
+
+                                    mail.executeSponsorMail();  
+                                }
+
+                                //oculta imagen ajax
+                                $('#mascaraAJAX').fadeOut(300);
+                                $('#mascaraAJAX').html(''); 
+
+                            }                            
+                            
+                        }
+
+                    }else if(metodoPago == 21){//Sí el se seleccionó MULTIPAGOS BANCOMER
+                        alert('Lo sentimos, aún no está habilitado éste módulo');
+                    }
+                }else if(flagSerialCode == 'sc0'){//Sí entramos aquí es porque el SERIAL_CODE es correcto y está disonible
+
+                    ///////////////////////////////////////////////////////
+                    /************* Obtiene el ID de la Orden *************/
+                    queryData('USP_VBC_GET_ORDER_ID', [], getOrderID2);
+                    function getOrderID2(dataSet) {
+                        var rec = dataSet[0];
+                        var numOrden = rec['orderId'];  console.log('Estamos en sc0: '+ rec);                          
+                        
+                        //////////////////////////////////////////////////////
+                        /*************** Inserta Nuevo Usario ***************/
+                        queryData('USP_VBC_SET_USER', argsInscription, storeUser2);
+                        function storeUser2(dataSet2) {
+                            var rec2 = dataSet2[0]; console.log(rec2);
+
+                            //El procedimiento USP_VBC_SET_USER nos envía como respuesta los nuevos datos del Usuario
+                            var newUserId = rec2['newUserid'];
+                            var newUserAlias = rec2['userAlias'];
+                            var newUserPassword = rec2['password'];  console.log(newUserId+' '+newUserAlias+' '+newUserPassword);
+                            //Extraemos los subtotales y totales de la orden
+                            var subtotalPrev = $('table#order tbody tr:nth-child(2) td').text();
+                            var subtotal = subtotalPrev.substr(2, subtotalPrev.length);
+                            var montoPorEnvioPrev = $('table#order tbody tr:nth-child(3) td').text();
+                            var montoPorEnvio = montoPorEnvioPrev.substr(2, montoPorEnvioPrev.length);
+                            var impuestoTotalPrev = $('table#order tbody tr:nth-child(4) td').text();
+                            var impuestoTotal = impuestoTotalPrev.substr(2, impuestoTotalPrev.length);
+                            var granTotalPrev = $('table#order tbody tr:nth-child(5) td').text();
+                            var granTotal = granTotalPrev.substr(2, granTotalPrev.length);
+
+                            console.log('Inserción lista');
+
+                            //====================================================//
+                            //Se crea XML con los datos de la órden a ser enviados//
+                            //====================================================//
+                            var items = '<ITEM ITEM_CODE="'+itemCode+'" QUANTITY="1" ITEM_PRICE="'+itemPrice+'" TOTAL_ITEM_PRICE="'+itemPrice+'" TOTAL_ITEM_PV="'+volume+'" TOTAL_ITEM_CV="'+comm_value+'" VOLUME_TYPE_ID="4" IS_KIT="" PRICE_LEVEL_ID="7" ITEM_SUBGROUP_ID="8" />'+"\n";
+
+
+                            var setXmlOrderNew = '<PAGE PRICE_LEVEL_ID="7" NEW_ORDER_ID="'+numOrden+'" ORDER_TYPE_ID="4">'+"\n"+
+                            '<REFER_SPON SPON_ID="'+userId+'" />'+"\n"+
+                            '<PER_INFO FOLIO_KIT="'+serialCode+'" SHIPPING_METHOD="'+metodoEnvio+'" CELL_PHONE="" CARRIER="'+paqueteria+'" WAREHOUSE_ID="'+centroAutorizado+'" WAREHOUSE="'+centroAutorizado+'" />'+"\n"+
+                            '<ORDER_INFO PAYMENT_METHOD="1" SPECIAL_INSTRUCTIONS="" />'+"\n"+
+                            '<PAYMENTS><PAYMENT AMOUNT="" TYPE="1"/></PAYMENTS>  '+"\n"+
+                            '<MULTI_TAXS_INFO>'+"\n"+
+                            '<MULTI_TAX_INFO TAX_TYPE="1" TAX_PERCENTAGE="16" BASE_TAXABLE="'+subtotal+'" AMMOUNT="'+impuestoTotal+'" />'+"\n"+
+                            '</MULTI_TAXS_INFO>'+"\n"+
+                            '<CART USE_BALANCE="" BALANCE="" PAYMENT_METHOD="1" GRAN_TOTAL_ITEM_PV="'+volume+'" GRAN_TOTAL_ITEM_CV="'+comm_value+'" GRAN_TOTAL_NETO="'+granTotal+'" HANDLING_AMOUNT="0" SHIPPING_AMOUNT="'+montoPorEnvio+'" TAXES="'+impuestoTotal+'" OPERATOR="'+userId+'" SOURCE_ID="6" REGISTER_PAYMENT="0" REFERENCE="" PAYMENT_AMOUNT="" AMOUNT_TPV="0">'+"\n"+
+                            items+
+                            '</CART>'+"\n"+
+                            '<MAIL_SHIPPING SHIPPING_NAME="'+nombre+', '+apePat+' '+apeMat+'" COUNTRY_ID="4" SHIPPING_ADDRESS_1="'+callePedidos+'" SHIPPING_ADDRESS_NUM_EXT="'+numExtPedidos+'" SHIPPING_ADDRESS_NUM_INT="'+numIntPedidos+'" SHIPPING_ADDRESS_2="'+coloniaPedidos+'" SHIPPING_CITY="'+ciudadPedidos+'" SHIPPING_STATE="'+estadoPedidos+'" SHIPPING_POSTAL_CODE="'+cpPedidos+'"  />'+"\n"+            
+                            '<NEW_MEMBER NEW_ID="'+newUserId+'"/>'+"\n"+
+                            '</PAGE>'; 
+
+                            setXmlOrderNew = depurarXML(setXmlOrderNew);
+                            //====================================================//
+                            //Termina la creación del XML para insertar el Pedido //
+                            //====================================================//
+
+
+                            /////////////////////////////////////////////////////////////////////////////////////////
+                            /*************** Inserta la Orden que se genera con la nueva inscripción ***************/
+                            queryData('USP_VBC_SET_ORDER_XML_NEW', ['string',setXmlOrderNew], storeOrder2);
+                            function storeOrder2(dataSet3) {
+                                var rec3 = dataSet3[0];                                
+                                
+                                 location.href="suscriptores6.html?granTotal="+granTotal+"&refBancomer="+rec3['refBancomer']+"&reference="+rec3['reference']+"&numOrden="+rec3['orderId']+"&nombre="+nombre+', '+apePat+' '+apeMat+"&newUserId="+newUserId+"&newUserAlias="+newUserAlias+"&newUserPassword="+newUserPassword+"&orderFlag=serializable";
+                                
+                            }
+
+                            //oculta imagen ajax
+                            $('#mascaraAJAX').fadeOut(300);
+                            $('#mascaraAJAX').html(''); 
+
+                        }                            
+                        
+                    }
+
+                }else if(flagSerialCode == 'sc1'){//Sí entramos aquí es porque el SERIAL_CODE no existe
+
+                     app.showNotificactionVBC('Código de Autorización no existe');
+
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+                }else if(flagSerialCode == 'sc2'){//Sí entramos aquí es porque el SERIAL_CODE ya está en uso
+
+                     app.showNotificactionVBC('Código de Autorización ya está en uso');
+
+                     //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+                }else if(flagSerialCode == 'sc3'){//Sí entramos aquí es porque el SERIAL_CODE aún no está listo
+
+                    app.showNotificactionVBC('Código de Autorización aún no está listo');
+
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html('');                     
+                }else if(flagSerialCode == 'sc1'){//Sí entramos aquí es porque el SERIAL_CODE ha sido cancelado
+
+                     app.showNotificactionVBC('Código de Autorización ha sido cancelado');
+
+                     //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html('');      
+                }else{
+
+                     app.showNotificactionVBC('Error con el Código de Autorización o con la selección del Kit Serializable');
+
+                     //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+                }
+            });            
+        
+    </script>
+    </body>
+</html>

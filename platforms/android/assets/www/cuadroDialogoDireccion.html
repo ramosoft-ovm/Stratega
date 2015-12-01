@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+        
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <link rel="stylesheet" href="css/styleSuscriptores.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Inscripciones</title>
+
+    </head>
+    <body>
+
+    <!--Inicia cuadro de dialogo para direcciones-->
+    <div id="direccion">
+
+        <!--Encabezado del cuadro de dialogo-->
+        <div class="encabezado">
+            <h2><span class="icon-address-book"></span> Dirección</h2>
+        </div><!--Termina Encabezado-->
+        
+        <!--Inicia contenido-->
+        <div id="contenedor">
+            <div id="contenidoDireccion">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align:center"><h1><span class="icon-location2"></span> </h1></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <th>Calle y Núm:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Colonia:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Ciudad:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Estado:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>CP:</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div id="map" style="width: 100%; height: 17em"></div></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="background:#fff;">
+                                <a class="btn" href="suscriptores2.html"><span class="icon-checkmark icon"></span> Aceptar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!--Termina Contenido-->
+
+    </div><!--Termina Cuadro de dialogo-->
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/apiGoogleMaps.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <!--<script type="text/javascript" src="js/suscriptores.js"></script>-->
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+
+            //Borra Historial del Botón back
+            if(history.forward(1))
+                location.replace(history.forward(1))
+
+
+            //Se extrae el id del centro aurotizado que se envío por GET para consultar sus detalles
+            var id = getByURL()['idCentroAutorizado'];
+            /*Devuelve conjunto de datos y carga CUADRO DE DIÁLOGO con los detalles del Centro Autorizado que ha sido seleccionado*/         
+            queryData('USP_VBC_GET_WAREHOUSE_DETAIL', ['integer', id], fillWarehouseDetails);
+            function fillWarehouseDetails(dataSet){
+                var rec = dataSet[0];         
+                for(var idx = 0; idx < dataSet.length; idx++){
+                    rec = dataSet[idx];
+                    
+                    $('thead tr:nth-child(1) th h1').append(rec['city']);
+                    $('tbody tr:nth-child(1) td').append(rec['address1']);
+                    $('tbody tr:nth-child(2) td').append(rec['address2']);
+                    $('tbody tr:nth-child(3) td').append(rec['city']);
+                    $('tbody tr:nth-child(4) td').append(rec['stateCode']);
+                    $('tbody tr:nth-child(5) td').append(rec['postalCode']);
+
+                    var latitude = rec['latitude'];
+                    var longitude = rec['longitude'];
+                    var warehouseDescription = rec['description'];
+                    var street = rec['address1'];
+                    var postalCode = rec['postalCode'];
+                    var city = rec['city'];
+                    var stateCode = rec['stateCode'];
+
+                    iniciarMapa(latitude, longitude, warehouseDescription, street, postalCode, city, stateCode);
+                    
+                }
+
+                //oculta imagen ajax
+                $('#mascaraAJAX').fadeOut(300);
+                $('#mascaraAJAX').html('');           
+            }
+
+
+            function iniciarMapa(latitude, longitude, warehouseDescription, street, postalCode, city, stateCode){
+                var map;
+
+                var myLatlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));
+                //var myLatlng = new google.maps.LatLng(29.0937827,-110.9520887);
+
+                var mapOptions = {
+                    center: myLatlng,
+                    zoom: 15,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+
+                map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+                //Marcador de la Ubicación
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    title:'Stratega Soluciones De Mercado'
+                });
+                marker.setMap(map);
+
+                var infowindow = new google.maps.InfoWindow({
+                content:'<h1>'+warehouseDescription+' - Soluciones De Mercado</h1><img src="res/icon/icon.png"><h3>'+street+'<br />'+postalCode+' '+city+' '+stateCode+'</h3>' });
+
+                // Ampliación al presionar en el marcador de la ubicación
+                google.maps.event.addListener(marker,'click',function() {
+                    infowindow.open(map,marker);
+                    map.setZoom(17);
+                    map.setCenter(marker.getPosition());
+                  });
+              
+            }          
+        
+    </script>
+    </body>
+</html>

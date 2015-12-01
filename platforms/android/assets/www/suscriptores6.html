@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <link rel="stylesheet" href="css/styleSuscriptores.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Inscripciones</title>
+
+        <style>
+        #bienvenida{
+            padding: 1em;
+            margin-bottom: .3em;
+        }
+        table{
+            width: 100%;
+        }
+        table tbody tr th{
+            width: 60%;
+        }
+
+        #fichas {
+            border: 1px solid black; 
+            margin: 0 auto;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+        .ficha {
+            width: 170px;
+            float: left;
+            margin: .3em .3em;
+        }
+        .clear {
+            clear: both;
+            margin-bottom: .5em;
+        }
+        #btnTerminarInsc{
+            margin: 0 auto;
+        }
+        #divBtn{
+            text-align: center;
+            margin: 1em;
+        }
+        #nombre{
+            padding: .3em;
+            background: rgba(0,0,0,.2);
+            font-size: 1.2em;
+        }
+        #btnWebOffice, #btnWebSite{
+            color: #57B8FE;
+        }
+        </style>
+
+    </head>
+    <body>
+
+        <!-- Inicia Página -->
+        <div id="inscripciones">
+
+        <!-- Encabezado de la página -->
+        <div class="encabezado">
+            <h2><span class="icon-trophy"></span> Inscripción Finalizada</h2>
+            <div>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+        </div>
+
+        <!-- Contenido de la página-->
+        <div id="contenedor" style="overflow-x: auto;">
+
+            <div id="bienvenida">
+                <table id="user-info">
+                    <thead>
+                        <tr>
+                            <td colspan="2">
+                                <p style="font-size:.9em; text-align:justify">Estimado(a): <span id="nombre"></span></p>
+                                <p style="font-size:.9em; text-align:justify">Me complace darte la bienvenida a nuestra exitosa Red de Afiliados.</p>
+                                <p style="font-size:.9em; text-align:justify">Tus datos ya fueron registrados en nuestro corporativo, siendo tu número de Afiliado: <span id="newUserId"></span></p>
+                                <p style="font-size:.9em; text-align:justify">Este número te identifica y certifica como Afiliado autorizado de SmartNetworks y te será de utilidad para realizar trámites con nuestro corporativo, tales como:</p>
+                                <ul style="font-size:.9em; text-align:justify">
+                                    <li>Obtener descuentos y promociones exclusivas con  los proveedores participantes.</li>
+                                    <li>Construir su propio negocio, logrando libertad financiera.</li>
+                                    <li>Integrar a otras personas a su Red.</li>
+                                    <li>Ganar comisiones por su Red de Afiliados.</li>
+                                    <li>Calificar por bonos y premios.</li>
+                                    <li>Participar en eventos de la Compañía.</li>
+                                    <li>Y muchos beneficios más, que constantemente estamos preparando para nuestros Afiliados.</li>
+                                </ul>
+                                <p style="font-size:.9em; text-align:justify">¡Ahora perteneces a una de las redes de mercadeo más importantes y exitosas del país ! <br>
+                                Trabajaremos en equipo apoyándote para que cuentes con todo lo necesario para triunfar junto con tu red. <br>
+                                SmartNetworks es una empresa que trata siempre de ofrecer los mayores beneficios a sus Afiliados, por lo que estamos con nuestras puertas abiertas para cualquier duda o comentario que tengas. <br>
+                                Esperamos tu mayor esfuerzo, recordándote que estamos estableciendo un compromiso mutuo de trabajo para tener éxito y ser siempre el número uno.
+                                </p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Usuario: </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Clave de Ingreso: </th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Número de orden: </th>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <td colspan="2">
+                                <p style="font-size:.9em; text-align:justify">Te recordamos que aunque se ha enviado automáticamente una copia de esta información a tu correo, es importante memorizar o guardar estos datos, te pedimos que por favor revises todas las bandejas y carpetas de tu correo, también tu bandeja de correo no deseado o SPAM. El asunto del correo es: "Bienvenido a SmartNetworks" Asi mismo te informamos que se enviará automáticamente una notificación a tu patrocinador, con la finalidad de que estén siempre en contacto. </p>
+                                <p style="font-size:.9em; text-align:justify">! BIENVENIDO A NUESTRA GRAN FAMILIA SMARTNETWORKS ! </p>
+                                <p style="font-size:.9em; text-align:justify">Para terminar tu registro es necesario acudir a una sucursal de ScotiaBank a realizar el pago con tu ficha de depósito, se recomienda obtener una captura de pantalla con los datos de la ficha o apuntarlos para evitar olvidarlos. <br>
+                                24 horas después de haber realizado el pago podrás ingresar a tu Oficina Virtual Web accesando a ésta liga <a href="#" id="btnWebOffice">http://stratega.vbc-for-mlm.com/JUANE</a> ó puedes descargar la Oficina Virtual Móvil disponible para dispósitivos con Sistema Operativo iOS y Android desde la tienda de Aplicaciones correspondiente.<br>
+                                También con el mismo Usuario y la misma Contraseña podrás accesar a nuestra página <a href="#" id="btnWebSite">http://www.smartnetworks.com.mx</a>
+                                </p> 
+                                <p style="font-size:.9em; text-align:justify">CONSTANTINO CLERICI PERLA</p>
+                                <p style="font-size:.9em; text-align:justify">Director General</p>                        
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+
+                <table id="order">
+                    <thead>
+                        <tr>
+                            <th colspan="3">ORDEN DE INSCRIPCIÓN</th>
+                        </tr>
+                        <tr>
+                            <th>Código Artículo</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Subtotal: </th>
+                            <td>$ </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Cargo por envío: </th>
+                            <td>$ </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Impuesto Total: </th>
+                            <td>$ </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="text-align:right;">Total: </th>
+                            <td>$ </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div id="divBtn">
+                <a class="btn" id="btnTerminarInsc"><span class="icon-checkmark icon"></span> Listo</a>
+            </div> 
+            
+            <div id="clear" style="display:none;">
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Ficha de Depósito: </th>
+                            <td><img id="logoScotiabank" src="" width="130"></td>
+                        </tr>
+                        <tr>
+                            <th>Cuenta: </th>
+                            <td>11006455735</td>
+                        </tr>
+                        <tr>
+                            <th>Banco: </th>
+                            <td>SCOTIABANK</td>
+                        </tr>
+                        <tr>
+                            <th>Empresa: </th>
+                            <td>STRATEGA SOLUCIONES DE MERCADO S.A. DE C.V</td>
+                        </tr>
+                        <tr>
+                            <th>Moneda: </th>
+                            <td>M.N.</td>
+                        </tr>
+                        <tr>
+                            <th>Importe: </th>
+                            <td>$ <span id="importe"></span></td>
+                        </tr>
+                        <tr>
+                            <th>Referencia: </th>
+                            <td><span id="referencia"></span></td>
+                        </tr>
+                    </tbody>
+                </table>                                               
+        
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+
+    </div>
+    
+   <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+    
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    
+    <script type="text/javascript" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();            
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+
+            //Borra Historial del Botón back
+            if(history.forward(1))
+                location.replace(history.forward(1));
+
+            
+            //===================================================//
+            //Se cargan los valores de usuario que vienen por GET//
+            //===================================================//            
+            var granTotal = getByURL()['granTotal'];
+            var reference = getByURL()['reference'];
+            var numOrden = getByURL()['numOrden'];
+            var nombre = getByURL()['nombre'];
+            var newUserId = getByURL()['newUserId'];
+            var newUserAlias = getByURL()['newUserAlias'];
+            var newUserPassword = getByURL()['newUserPassword'];
+            var orderFlag = getByURL()['orderFlag'];
+            var itemCode = getByURL()['itemCode'];
+            var description = getByURL()['description'];
+            var itemPrice = getByURL()['itemPrice'];
+            var initKitCode = getByURL()['initKitCode'];
+            var initKitDescription = getByURL()['initKitDescription'];
+            var initKitPrice = getByURL()['initKitPrice'];
+            var subtotal = getByURL()['subtotal'];
+            var montoXenvio = getByURL()['montoXenvio'];
+            var impuestoTotal = getByURL()['impuestoTotal'];
+
+            //Se asigna los valores correspondientes a la etiqueta que pertenenecen
+            $('#nombre').text(nombre);
+            $('#newUserId').text(newUserId);
+            $('table#user-info tbody tr:nth-child(1) td').text(newUserAlias);
+            $('table#user-info tbody tr:nth-child(2) td').text(newUserPassword);
+            $('table#user-info tbody tr:nth-child(3) td').text(numOrden);
+            //Se asignan los productos de la órden a la tabla#order
+            var text = '';
+
+            text += '<tr>';
+            text += '<td>'+ itemCode +'</td>';
+            text += '<td>'+ description +'</td>';
+            text += '<td>$ '+ itemPrice +'</td>';
+            text += '</tr>';
+            text += '<tr>';
+            text += '<td>'+ initKitCode +'</td>';
+            text += '<td>'+ initKitDescription +'</td>';
+            text += '<td>$ '+ initKitPrice +'</td>';
+            text += '</tr>';
+
+            $('table#order thead tr:nth-child(1) th').append(' # '+numOrden);
+            $('table#order tbody').prepend(text);
+            $('table#order tbody tr:nth-child(3) td').append(subtotal);
+            $('table#order tbody tr:nth-child(4) td').append(montoXenvio);
+            $('table#order tbody tr:nth-child(5) td').append(impuestoTotal);
+            $('table#order tbody tr:nth-child(6) td').append(granTotal);
+
+            //Se identifica cuál fué el método de pago para saber si hay que mostrar la Ficha de Dep[osito o no
+            if(orderFlag == 'deposito'){
+                $('#clear').fadeIn(300);
+
+                $('#logoScotiabank').attr('src', domain+"/image/Scotiabank.jpg");
+                $('#importe').text(granTotal);
+                $('#referencia').text(reference);
+
+                //oculta imagen ajax
+                $('#mascaraAJAX').fadeOut(300);
+                $('#mascaraAJAX').html(''); 
+            }else{
+                //oculta imagen ajax
+                $('#mascaraAJAX').fadeOut(300);
+                $('#mascaraAJAX').html('');
+            }
+
+            //Termina el Proceso de Inscripción y regresamos al Panel de Control
+            $('#btnTerminarInsc').click(function(event) {
+                //Eliminamos arreglos locales con los datos de la inscripción que estaba en curso
+                localStorage.removeItem('susc1Local');
+                localStorage.removeItem('susc2Local');
+                localStorage.removeItem('susc3Local');
+                localStorage.removeItem('susc4Local');
+                localStorage.removeItem('susc5Local');
+                //Redirecionamos al Panel de Control
+                location.href = "welcome.html";
+            });
+
+            //ENLACE A LA OFICINA VIRTUAL DEL USUARIO
+            $('#btnWebOffice').click(function(event) {
+                var ref = window.open('http://stratega.vbc-for-mlm.com/JUANE', '_blank', 'location=yes');
+            });
+
+            //ENLACE AL SITIO WEB DE EMPRESA
+            $('#btnWebSite').click(function(event) {
+                var ref = window.open('http://www.smartnetworks.com.mx', '_blank', 'location=yes');
+            });
+        
+    </script>
+    </body>
+</html>

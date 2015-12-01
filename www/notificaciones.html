@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" href="css/styleNotificaciones.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Notificaciones</title>
+    </head>
+    <body>
+        <!-- Comienza página Notificaciones -->
+        <div>
+            
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="welcome.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-mail2"></span> Notificaciones</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div>
+
+            <!-- Contenido de la página -->
+            <div id="contenedor">
+                <div id="clear">
+                    
+                    <div id="divPeriodo">
+                        <select class="select" name="periodo" id="periodo">
+                        </select>
+                    </div>
+                    
+                    
+                    <table id="idetificadores">                    
+                        <thead>                        
+                            <tr>
+                                <td><a id="btnNotChecked" value="Ver" class="btn"><span class="icon-eye-minus icon"></span> Ocultar</a></td>
+                                <td class="notChecked">Notificaciones Recientes</td>
+                            </tr>
+                            <tr>
+                                <td><a id="btnChecked" value="Ver" class="btn"><span class="icon-eye-minus icon"></span> Ocultar</a></td>
+                                <td class="checked">Notificaciones Vistas</td>
+                            </tr>                            
+                        </thead>
+                    </table>
+                    
+                    <table id="notificaciones">
+                        <thead>
+                            <tr>
+                                <th>Para ver el mensaje presione el botón "<span class="icon-eye"></span> Ver Detalles"</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--Desde la Base-->
+                        </tbody>
+                    </table>
+            
+                </div>
+            </div>        
+
+            <!-- Pié de página -->
+            <!--<div data-role="footer" style="text-align:center" data-theme="a" data-position="fixed">
+                Copyright © 2015 RM International Services S.A. de C.V.
+            </div>-->
+
+        </div>
+
+    <div id="deviceready" style="display: none">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+    
+    <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/loadNotificaciones.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+    </script>
+    </body>
+</html>

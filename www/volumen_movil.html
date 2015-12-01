@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+        <link rel="stylesheet" type="text/css" href="css/styleVolumenMovil.css">
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <style type="text/css">
+            
+        </style>
+
+        <title>Visor de Árbol</title>
+
+        <script type="text/javascript" src="js/connect.js"></script>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+            ///////////////////////////////////////////////////////
+            /************ Llena combobox de periodos *************/
+            queryData('USP_VBC_GET_PERIODS', ['integer','5','integer','0'], periodos);
+            var periodo = document.getElementById('periodo');
+            function periodos(dataSet) {
+                var rec = dataSet[0];
+                var text = '';
+                for(var idx = 0; idx < dataSet.length; idx++){
+                    rec = dataSet[idx];
+                    var opcion = document.createElement('option');
+                    opcion.text = rec['description'];
+                    opcion.value = rec['periodId'];
+                    periodo.options.add(opcion);
+                }
+                var periodoByURL = getByURL()['period'];
+                if (typeof periodoByURL != "undefined") {
+                    periodo.value = periodoByURL;
+                }
+            }
+
+            ////////////////////////////////////////////////
+            /********  Imprime todos los nombres **********/
+            var userId =  localStorage.getItem('userIdLocal');
+            //userId = 11;
+            periodo.addEventListener('change', function(event) {
+                queryData('USP_VBC_GET_MATRIX_VIEWER', ['integer',userId,'integer','0','integer','0','integer',periodo.value,'integer','1'], visor);
+                event.target.blur();
+                //Carga imagen ajax
+                showWaitLoader('mascaraAJAX');
+                $('#mascaraAJAX').fadeIn(300);
+            });
+            queryData('USP_VBC_GET_MATRIX_VIEWER', ['integer',userId,'integer','0','integer','0','integer',periodo.value,'integer','1'], visor);
+            function visor(dataSet) {
+                var rec = dataSet[0];
+                if (typeof rec == "undefined") {
+                    app.showNotificactionVBC('Aún no tienes una red que mostrar');
+                    location.href ='welcome.html';
+                }
+                var text = '';
+                var boole = false;
+                var como = "";
+                var nodos = [];
+                var numNodo = 0;
+                for(var idx = 0; idx < dataSet.length; idx++){
+                    rec = dataSet[idx];
+                    text += "<li class='ocultar'><span class='espacio' style='font-size:10px'></span><a onClick='link(event)' class='li" +
+                    rec['userIdUp']+ "' id='"+
+                    rec['userId']+ "' href='#'>" +
+                    rec['name'].toUpperCase()+ "</a> <a onClick='javascript:location.href=\"volumen_movil_detalles.html?id="+
+                    rec['userId']+"&period="+periodo.value+"&dateCreated="+rec['dateCreated']+"&pd="+rec['pd']+"&personalVolume="+rec['personalVolume']+"&CommValue="+rec['personalCommValue']+"&name="+rec['name']+"\"' class='icon-point-right'></a><ul class='ul" +
+                    rec['userId']+ "'></ul></li>\n";
+                }
+                //Imprime respuesta
+                var graphite = document.querySelector('.graphite');
+                graphite.innerHTML = text;
+                //Como todo esta oculto, muestra primer elemento para iniciar
+                document.querySelector('li:nth-child(1)').classList.add('mostrar');
+                document.querySelector('li:nth-child(1)').classList.add('estilo');
+                document.querySelector('li:nth-child(1) a').classList.add('estiloA');
+                document.querySelector('a:nth-child(3)').classList.add('estiloA');
+                document.querySelector('li:nth-child(1) span').classList.add('estiloA');
+                //Disparador de click inicial para desplegar primer nodo
+                var evento = document.createEvent('MouseEvent');
+                evento.initMouseEvent('click',true, true, window,0,0,0,0,0, false, false, false, false, 0, null);
+                var desplegaNth1 = document.querySelector('li:nth-child(1)').childNodes[1];
+                desplegaNth1.dispatchEvent(evento);
+                //oculta imagen ajax
+                $('#mascaraAJAX').fadeOut(300);
+                $('#mascaraAJAX').html('');
+            }
+        });
+
+        //////////////////////////////////////////////////
+        /********  Muestra visor dinamicamente **********/
+
+        //Función que se ejecuta por cada enlace pulsado ejecutado por onClick
+        function link(event) {
+            //previene acción default para evitar refresh
+            event.preventDefault();
+            //id del enlace clickeado
+            var id = event.target.id;
+            //selecciona ul que almacenará los hijos del nodo clickeado
+            var uladd = document.querySelector('.ul'+id);
+            //selecciona todos los elementos hijos del nodo clickeado
+            var liadd = document.querySelectorAll('.li'+id);
+            //Selecciona el nodo para verificar si contiene hijos
+            var hijos = uladd.childNodes[0];
+            if (typeof hijos == "undefined") {
+                //recorre todos los hijos
+                for (var i = 0; i < liadd.length; i++) {
+                    //por cada hijo, cuanta si existen mas subhijos y los imprime
+                    var numNodos = document.querySelectorAll('.li'+liadd[i].id).length;
+                    uladd.innerHTML += '<li>('+numNodos+')' +liadd[i].parentNode.innerHTML+ '</li>';
+                    //en caso de haber hijos, imprime flecha a la derecha
+                    if (numNodos != 0) {
+                        uladd.querySelectorAll('span')[i].classList.add('icon-arrow-right');
+                    }
+                    else {
+                        //de lo contrario imprime signo menos de neutro
+                        uladd.querySelectorAll('span')[i].classList.add('icon-minus');
+                    }
+                }
+                //imprime flecha a la izquierda ya que hijos no esta definido
+                document.getElementById(id).parentNode.querySelector('span:nth-child(1)').classList.add('icon-arrow-left');
+            }
+            else {
+                //se imprime vacio para simular el plegado del menú
+                uladd.innerHTML = "";
+                document.getElementById(id).parentNode.querySelector('span:nth-child(1)').classList.add('icon-arrow-right');
+                document.getElementById(id).parentNode.querySelector('span:nth-child(1)').classList.remove('icon-arrow-left');
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <div>
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="welcome.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-tree"></span> Volúmen Móvil</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div>
+
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+            <div style="text-align: right" id='divPeriodo'>
+                <select  id="periodo" name="periodo" class="category">
+                    <!-- Desde la Base -->
+                </select>
+            </div>
+            
+            <div class="graphite">
+                <!-- Desde la Base -->
+            </div>
+
+
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+        
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+                
+                //El registro al servicio de google lo hacemos automáticamente
+                app.initialize();            
+                menu.cargarMenu();
+        </script>
+    </body>
+</html>

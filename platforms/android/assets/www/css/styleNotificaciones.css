@@ -1,0 +1,255 @@
+body{
+	margin: 0;
+}
+
+h2{
+	color: #ffffff;
+	margin-left: .7em;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.back_bar {
+	top: 15px !important;
+	position: absolute !important;
+	z-index: 10001 !important;
+}
+
+#contenedor{
+	margin: auto;
+	margin-top: 4.5em;
+}
+
+.encabezado{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #b0232a;
+}
+
+.menu_bar {
+	top: 15px !important;
+}
+
+.btn {
+	cursor: pointer;
+	background: #B24846;
+	color: white;
+	padding: 10px 15px;
+	font-size: .8em;
+	border: none;
+	text-decoration: none;
+}
+
+.btnDetails{
+	cursor: pointer;
+	background: #B24846;
+	color: white;
+	padding: 4px;
+	border: none;
+	text-decoration: none;
+}
+
+.iconDetails{
+	background: rgba(0,0,0,0.08);
+	padding: 6px;
+	margin-left: -5px;
+}
+
+.icon {
+	background: rgba(0,0,0,0.08);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-left: -15px;
+}
+
+.icon-right {
+	background: rgba(0,0,0,0.08);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-right:-15px;
+}
+
+a.btnLink{	
+	color: rgba(0,0,0,.8);
+	font-weight: normal;
+	text-decoration: none;
+}
+/*ESTILOS GENERALES DE TABLA*/
+table{
+	text-shadow: 1px 1px 3px rgba(0,0,0,.7);
+	background: white;
+	width: 100%;
+	height: 100%;
+	font-size: 1.1em;
+	color: #ffffff;
+	text-align: center;
+}
+
+table th{
+	padding: 3%;
+}
+
+table td{
+	padding: 1.5%;
+	width: 50%;
+}
+/*TABLA IDENTIFICADORES*/
+table#idetificadores{
+	width: 300px;
+	margin: 1em;
+	/*color: black;*/
+	text-shadow: 1px 1px 2px rgba(0,0,0,.9);
+}
+/*TABLA NOTIFICACIONES*/
+table#notificaciones thead tr th{
+	background: #B24846;
+	text-align: justify;
+}
+
+table#notificaciones tbody tr th{
+	position:relative;
+}
+
+table#notificaciones tbody tr th span:nth-child(2){
+	position:absolute;
+	top:10%;
+	right:10px;
+	font-size: .7em;
+}
+
+table#notificaciones tbody tr th a{
+	position:absolute;
+	top:64%;
+	right:10px;
+	font-size: .9em;
+}
+/**TABLA DETALLES DE NOTIFIDACIÓN*/
+table#detalles{
+	width: 95%;
+	margin: auto; 
+	font-size: 1em;
+}
+
+table#detalles thead tr th{
+	background: #B24846;
+	text-align: center;
+}
+
+table#detalles tbody tr th{
+	background: #aeadab;
+	text-align: right;
+}
+
+table#detalles tbody tr td{
+	background: #dddddd;
+	text-align: justify;
+	color: black;
+	text-shadow: 1px 1px 1px rgba(255,255,255,.6);
+}
+
+a#back{
+	margin-left: 2.5%;
+}
+
+#divPeriodo{
+	text-align: right;
+	margin: 0 .5em 1.5em 0;
+}
+
+#periodo{
+	font-size: 1em;
+	width: 16.2em;
+}
+
+.select{
+	background: #666;
+  	color: #fff;
+}
+
+select{
+	width: 100%;
+	margin: 0 auto;
+  border: none;
+  font-family: inherit;
+  font-size: .8em;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 5px 5px;
+  display: inline-block;
+  margin-bottom: 20px;
+  top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.checked{
+	padding-right: 5%;
+	text-align: left;
+	background: #9D9D99;
+}
+
+.notChecked{	
+	padding-right: 5%;
+	text-align: left;
+	background: #5D5D5B;	
+}
+
+.notFound{
+	padding-right: 5%;
+	text-align: left;
+	background: #25597F;
+}
+
+@media (min-width: 640px) {
+
+	#contenedor{
+		margin-top: 6.5em;
+	}
+
+	h2{
+		margin-left: 2em;
+		font-size: 1.8em;
+	}
+
+	.menu_bar {
+		top: 25px !important;
+	}
+
+	table thead tr th{
+		padding: 2%;
+		font-size: 1.3em;
+	}
+
+	table tbody tr th{	
+		font-size: 1.2em;
+	}
+
+	table#detalles{
+		font-size: 1.2em;
+	}
+	.back_bar {
+		top: 28px !important;
+	}
+	
+}
+
+@media (min-width: 768px) {
+
+	.btn{
+		font-size: 1.2em;
+	}	
+
+	table th{
+		padding: 2%;
+	}
+
+}

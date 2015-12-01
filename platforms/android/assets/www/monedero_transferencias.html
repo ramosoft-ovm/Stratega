@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleMonedero.css">
+
+        <title>Transferencia</title>
+    </head>
+    <body>
+        <div id="cart">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="welcome.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-share"></span> Transferencias</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+            
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->   
+
+                <div id="catalogo">                    
+                    <div>                        
+                        <div>
+                            <label for="">Seleccione el tipo de Comercio del cual desea retirar</label><br><br>
+                            <select id="cmb_comercio" class="category">
+                                <option value="0" title="0">Seleccione uno</option>
+                                <!-- Desde la base -->
+                            </select><br><br>
+                            <label for="">Sus puntos se transferirán a</label><br><br>
+                            <input id="txt_comercio_destino" type="text" class="input" readOnly placeholder="Esperando a que seleccione un tipo de Comercio..." /><br><br>
+                            <label for="">Digite el ID de usuario al que desea transferir</label><br><br>
+                            <input id="txt_usuario_destino" type="number" class="input" placeholder="ej. 12"/><br><br>
+                            <label for="">Digite la cantidad</label><br><br>
+                            <span class="cantidades_span">$</span><div id="txt_cantidad_div"><input id="txt_cantidad" type="number" class="input" placeholder="ej. 200"/></div><span class="cantidades_span">.</span><div id="txt_cantidad_decimal_div"><input id="txt_cantidad_decimal" type="number" class="input" placeholder="ej. 55" max="99" min="00"></div><br><br>
+                            <label for="">Digite su contraseña</label><br><br>
+                            <input id="txt_password" type="password" class="input"/><br><br>
+                            <label for="">Confirme su contraseña</label><br><br>
+                            <input id="txt_confirmar_password" type="password" class="input" /><br><br>
+                            <label for="">Comentario(Campo no Obligatorio)</label><br><br>
+                            <textarea class="input" id="txt_comentarios" placeholder="ej. Transferencia por $200.00 para Monedero de Gasolineras"></textarea><br><br>
+                        </div>
+                        <div>
+                            <br /><a id="btn_transferir" href="#" class="btn"><span class="icon-share icon"></span> Transferir</a>
+                        </div>
+                    </div>
+
+                    <!---->
+
+                </div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/connect.js"></script>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript" src="js/monedero_transferencias.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+        </script>
+    </body>
+</html>

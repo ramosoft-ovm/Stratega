@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleCarritoCompras.css">
+
+        <title>Carrito de Compras - Ordenes</title>
+        <script type="text/javascript" src="js/connect.js"></script>   
+        <script type="text/javascript" src="js/carrito_compras.js">
+            //queryData(STORED_PROCEDURE, ['integer','1','string','abc','',1], function, numeroTabla)
+        </script>
+    </head>
+    <body>
+        <div id="cart">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="welcome.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-cart"></span> Carrito de Compras</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+            
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <div class="car">
+                    <div style="padding-bottom: 5px; text-align:center">
+                        <a href="#" class="ver_categorias btn" onClick="Href('carrito_compras_catalogo.html')" ><span class="icon-list2 icon"></span> Categorías</a>
+                        <a href="#" class="cerrar_pedido btn" ><span class="icon-checkmark icon"></span> Continuar</a>
+                        <a href="#" class="cancelar btn" ><span class="icon-cross icon"></span> Cancelar</a>
+                        <br />
+                    </div>
+                    <div class="indicadores">
+                        <span id="indicadorCatalogo"></span>
+                        <span id="indicadorPromo"></span>
+                        <span id="indicadorRegalos"></span>
+                    </div>
+                    <div id="catalogo" style="padding-top: 20px;">
+
+                        <!-- Desde la base -->
+
+                    </div>
+
+                    <div style="float: left; width: 49%; padding:15px 0"><span id="productosPromo"><!-- Desde la base --></span></div>
+                    <div style="float: left; width: 49%; padding:15px 0"><span id="productosRegalo"><!-- Desde la base --></span></div>
+                    <div style="clear: both"></div>
+                    <div style="padding-bottom: 5px; text-align:center">
+                        <a href="#" class="ver_categorias btn" onClick="Href('carrito_compras_catalogo.html')" ><span class="icon-list2 icon"></span> Categorías</a>
+                        <a href="#" class="cerrar_pedido btn" ><span class="icon-checkmark icon"></span> Continuar</a>
+                        <a href="#" class="cancelar btn" ><span class="icon-cross icon"></span> Cancelar</a>
+                    </div>
+                </div>
+
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+        </script>
+    </body>
+</html>

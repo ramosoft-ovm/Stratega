@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <link rel="stylesheet" href="css/styleSuscriptores.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Inscripciones</title>
+
+    </head>
+    <body>
+
+        <!-- Inicia Página -->
+        <div id="inscripciones">
+
+        <!-- Encabezado de la página -->
+        <div class="encabezado">
+            <div>
+                <div class="back_bar">
+                    <a href="suscriptores3.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+            <h2><span class="icon-key"></span> Información de Seguridad</h2>
+            <div>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+        </div>
+
+        <!-- Contenido de la página-->
+        <div id="contenedor" style="overflow-x: auto;">
+            
+            <div id="clear" >
+                
+                <form action="#" id="inscripcion" name="inscripcion">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <p style="font-size:.9em; text-align:justify">Por favor, seleccione cuidadosamente la siguiente información (todos los campos son obligatorios).</p>
+                                    <p style="font-size:.9em; text-align:justify">La siguiente información será usada para darle acceso a las áreas protegidas del sistema así como para identificarle con nuestro departamento de servicio al cliente. Asegúrese de recordar ésta información y de no compartirla con nadie.</p>
+                                </td>
+                            </tr>
+                        </thead>
+                         <tbody>
+                           <tr>
+                             <th>Alias:</th>
+                             <td>
+                                 <input  type="text" name="txtAlias" id="txtAlias" onblur="ValidaAlias(this.value)">
+                             </td>
+                           </tr>
+                           <tr>
+                             <th>Contraseña (8 - 12 caracteres o dígitos):</th>
+                             <td>
+                                <input  type="password" name="txtPassword" id="txtPassword">
+                            </td>                                                   
+                           </tr>
+                            <tr>
+                                <th>Confirme su Contraseña:</th>
+                                <td>
+                                    <input  type="password" name="txtPasswordConfirm" id="txtPasswordConfirm">
+                                </td>    
+                            </tr>                            
+                            <tr>
+                                <td colspan="2" style="height:10px;background:#ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background:#ffffff">
+                                    <a class="btn" href="#" onclick="Href('suscriptores3.html')"><span class="icon-arrow-left icon"></span> ANTERIOR</a>
+                                    <!--<a href="suscriptores3.html"    data-role="button">SIGUIENTE -></a>-->
+                                    <a class="btn" type="button" id="btnSiguiente4" name="btnSiguiente4"   onclick="validateFields()">SIGUIENTE <span class='icon-arrow-right icon-right'></span></a>
+                                </td>
+                            </tr>
+                         </tbody>
+                   </table>
+                </form>
+        
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+
+    </div>
+    
+   <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+    
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/suscriptores.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();            
+
+            //Borra Historial del Botón back
+            if(history.forward(1))
+                location.replace(history.forward(1));
+            
+            function validateFields(){
+
+                //Carga imagen ajax
+                showWaitLoader('mascaraAJAX');
+                $('#mascaraAJAX').fadeIn(300);
+
+                if(ValidaCamposVacios3()){
+                    var alias = $('#txtAlias').val();
+                    var sessionId = localStorage.getItem("sessionIdLocal");
+                    /*Devuelve '0' si el alias no está disponible y 1 si aún no está siendo utilizado por otro usuario*/
+                    queryData('USP_VBC_VALIDATE_NICKNAME', ['string', alias, 'integer', sessionId], getIsAvailable);
+
+                    function getIsAvailable(dataSet){
+                        var rec = dataSet[0];
+
+
+                        if(rec['isAvailable'] == 0){
+                            app.showNotificactionVBC('El Alias que usted ha ingresado ya está en uso, elija otro');
+                        }else if(rec['isAvailable'] == 1){
+                            window.location.href = "suscriptores5.html";
+                        }
+                        //oculta imagen ajax
+                        $('#mascaraAJAX').fadeOut(300);
+                        $('#mascaraAJAX').html(''); 
+                    }                    
+                }else{
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html(''); 
+                }              
+            }
+            
+
+    </script>
+    </body>
+</html>

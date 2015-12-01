@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" href="css/styleNotificaciones.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Detalles Notificaciones</title>
+    </head>
+    <body>
+        <!-- Comienza página Notificaciones -->
+        <div>
+            
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <h2><span class="icon-mail2"></span> Detalles de Notificación</h2>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"><span class="icon-menu"></span> Menu</a>
+                </div>
+            </div>
+
+            <!-- Contenido de la página -->
+            <div id="contenedor">
+                <div id="clear"> 
+                    <a id="back" class="btn"><span class="icon-arrow-left icon"></span> Regresar</a>
+                    <br><br>
+
+                    <table id="detalles">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Notificación con identificador # </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+            
+                </div>
+            </div>        
+
+        </div>
+
+    <div id="deviceready" style="display: none">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+    
+    <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+
+            //Extracción de valores que vienen por GET
+            var notification_id = getByURL()['notification_id'];
+            var sender_user_id = getByURL()['sender_user_id'];
+            var sender_alias = getByURL()['sender_alias'];
+            var description = getByURL()['description'];
+            var date = getByURL()['date'];
+            var hour = getByURL()['hour'];
+            var period_id = getByURL()['period_id'];
+
+            var text = '';
+
+            text += '<tr>';
+            text += '<th># de Usuario que envió la Notificación: </th>';            
+            text += '<td>'+sender_user_id+'</td>';            
+            text += '</tr>';
+            text += '<tr>';
+            text += '<th>Alias de Usuario que envió la Notificación: </th>';            
+            text += '<td>'+sender_alias+'</td>';            
+            text += '</tr>';
+            text += '<tr>';
+            text += '<th>Fecha de envío: </th>';            
+            text += '<td>'+date+'</td>';            
+            text += '</tr>';
+            text += '<tr>';
+            text += '<th>Hora de Envío: </th>';            
+            text += '<td>'+hour+'</td>';            
+            text += '</tr>';
+            text += '<tr>';
+            text += '<th>Mensaje de la Notificación: </th>';            
+            text += '<td>'+description+'</td>';            
+            text += '</tr>';
+
+            $('table#detalles thead tr th').append(notification_id);
+            $('table#detalles tbody').append(text);
+
+            //oculta imagen ajax
+            $('#mascaraAJAX').fadeOut(300);
+            $('#mascaraAJAX').html(''); 
+
+            //Se actualiza el status de la Notificación para que aparezca como leída
+            var args = [
+                'integer',  notification_id  //@PN_NOTIFICATION_ID
+            ];
+            queryData('USP_VBC_SET_UPDATE_NOTIFICATION_STATUS', args, getError);
+            function getError(dataSet){
+                var rec = dataSet[0];
+                if(rec['error'] == 0){
+                    console.log('Se actulizó el status');
+                }else{
+                    console.log('No se actualizó el status');
+                }
+            }
+
+            //Se regresa por GET el Id del periodo de la Notificación para que se cargue el mismo
+            var btnBack = document.getElementById('back');
+            btnBack.addEventListener('click', function(){
+                location.href = "notificaciones.html?period_id="+period_id;
+            });
+
+    </script>
+    </body>
+</html>

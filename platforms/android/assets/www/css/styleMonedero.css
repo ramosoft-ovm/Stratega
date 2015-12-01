@@ -1,0 +1,303 @@
+h2{
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.8em;
+}
+.menu_bar {
+	top: 25px !important;
+}
+.back_bar {
+	top: 28px !important;
+	position: absolute !important;
+	z-index: 10001 !important;
+}
+label{
+	padding: .5em;
+	color: #000;
+	width: 100%;
+}
+#lbl_titulo {
+	color: black;
+	font-weight: bold;
+}
+
+.input, .select{
+	background: #666;
+  	color: #fff;
+  	text-align: center;
+  	padding: 5px;
+  	width: 100%;
+}
+textarea {
+	text-align: left !important;
+	height: 45px;
+}
+
+select{
+	width: 100%;
+	height: 30px;
+	margin: 0 auto;
+	border: none;
+	font-family: inherit;
+	font-size: .8em;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 5px 5px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.category {
+	background: #666;
+	color: #fff;
+}
+
+#catalogo div{
+	margin-bottom: .4em;
+}
+
+.encabezado{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #b0232a;
+}
+#catalogo {
+	padding-top: 95px;
+	margin: 0 auto;
+}
+#catalogo div:nth-child(1) {
+	text-align: center;
+	width: 75%;
+	margin: 0 auto;
+	padding-top: 1em;
+	background: #ffffff;
+}
+
+table {
+	margin: 0 auto;
+	margin-bottom: 8px;
+	background: white;
+	width:95%;
+	font-size: 1.1em;
+	border-collapse: separate;
+	border-spacing: .5em;
+}
+table tbody tr th {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: left;
+	background: #aeadab;
+	text-shadow: 1px 1px 3px rgba(0,0,0,.7);
+	padding: 1.5%;
+	color: white;
+}
+table thead tr th {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: center;
+	background: #B24846;
+	padding: 1.5%;
+	color: white;
+}
+table tbody tr td {
+	background: #ddd;
+	color: #000;
+	padding: 1.5%;
+	text-align: center;
+}
+table tbody tr td:nth-child(3), table tbody tr td:nth-child(4) {
+	text-align: right;
+}
+.icon {
+	background: rgba(0,0,0,0.2);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-left: -15px;
+}
+
+.icon-right {
+	background: rgba(0,0,0,0.2);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-right:-15px;
+}
+
+#btn_regresar{
+	margin-left: 2.5%;
+}
+
+.btn {
+	padding: 10px 15px;
+	background: #B24846;
+	color: #fff;
+	border: none;
+	text-decoration: none;
+	font-size: inherit;
+}
+.btn-tbl {
+	background: #B24846;
+	color: white;
+	padding: 3px 10px;
+	font-size: 18px;
+	border: none;
+	text-decoration: none;
+}
+#catalogo div {
+	text-align: center;
+	padding-bottom: 10px;
+}
+#balance .balance td, .balance td{
+	background: #0063b6 !important;
+	text-align: right;
+	color: white !important;
+}
+.center {
+	text-align: center !important;
+}
+.tbl_balance td {
+	background: #aeadab;
+	color: white;
+	text-shadow: 1px 1px 3px rgba(0,0,0,.7);
+	text-align: right;
+}
+
+#txt_cantidad_div, #txt_cantidad_decimal_div{
+	display: inline-block;
+}
+
+.cantidades_span{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#txt_cantidad_div{
+	width: 55%;
+	margin-right: 1.2em;
+	margin-left: .4em;
+}
+
+#txt_cantidad_decimal_div{
+	width: 25%;
+	margin-left: .5em;
+}
+/*Oculta arreglo de datos*/
+#lbl_arreglo {
+	position: absolute;
+	top: -1500px;
+	visibility: hidden;
+}
+@media (max-width: 640px) {
+	h2{
+		/*margin-left: 3em;*/
+		font-size: 1.2em;
+	}
+	.menu_bar {
+		top: 15px !important;
+	}
+	.back_bar {
+		top: 15px !important;
+	}
+
+	#catalogo div:nth-child(1) {
+		width: 90%;
+	}
+	table {
+		font-size: 1em;
+	}
+
+	#txt_cantidad_div{
+		width: 50%;
+		margin-right: 1.2em;
+		margin-left: .5em;
+	}
+
+	#txt_cantidad_decimal_div{
+		width: 20%;
+		margin-left: .5em;
+	}
+}
+@media (max-width: 480px) {
+	table {
+		margin: 0 auto;
+		margin-bottom: 8px;
+		width:100%;
+		font-size: .8em;
+		border-collapse: separate;
+		border-spacing: .3em;
+	}
+	table tbody tr th {
+		padding-left: 5%;
+		padding-right: 5%;
+		text-align: left;
+		padding: 1.5%;
+		/*font-size: 15px;*/
+	}
+	table thead tr th {
+		padding-left: 5%;
+		padding-right: 5%;
+		text-align: center;
+		padding: 1.5%;
+		/*font-size: 15px;*/
+	}
+	table tbody tr td {
+		padding: 1.5%;
+		text-align: center;
+		/*font-size: 15px;*/
+	}
+	h2{
+		/*margin-left: 3em;*/
+		font-size: 1.2em;
+	}
+
+	input, select{
+		font-size: 11px;
+	}
+
+	label{
+		font-size: 15px;
+	}
+
+	.icon {
+		padding-top: 9px;
+		padding-right: 9px;
+		padding-left: 10px;
+		padding-bottom: 8px;
+		font-size: 10px;
+	}
+
+	.icon-right {
+		padding-top: 9px;
+		padding-right: 9px;
+		padding-left: 10px;
+		padding-bottom: 8px;
+		font-size: 10px;
+	}
+
+	.btn {
+		padding: 7px 15px;
+		font-size: 12px;
+	}
+	.btn-tbl {
+		padding: 2px 10px;
+		font-size: 15px;
+	}
+	.menu_bar {
+		top: 15px !important;
+	}
+	.back_bar {
+		top: 15px !important;
+	}
+
+	#btn_regresar{
+		margin-left: 0;
+	}
+}

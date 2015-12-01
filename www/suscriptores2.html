@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+
+        <link rel="stylesheet" href="css/styleSuscriptores.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Inscripciones</title>
+
+    </head>
+    <body>
+
+        <!-- Inicia Página -->
+        <div id="inscripciones">
+
+        <!-- Encabezado de la página -->
+        <div class="encabezado">
+            <div>
+                <div class="back_bar">
+                    <a href="suscriptores.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+            <h2><span class="icon-info"></span> Información Personal</h2>
+            <div>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                </div><!--end menu_bar-->
+            </div>
+        </div>
+
+        <!-- Contenido de la página-->
+        <div id="contenedor">
+            
+            <div id="clear" >
+                
+                <form action="#" id="inscripcion" name="inscripcion">
+                    <table>
+                         <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <p style="font-size:.9em; text-align:justify">Por favor complete la siguiente información (todos los campos son obligatorios).</p>
+                                </td>
+                            </tr>
+                        </thead>
+                         <tbody>
+                           <tr>
+                             <th>RFC:</th>
+                             <td style="height:6em;">
+                                 <input type="text" name="txtRFC" id="txtRFC" required><br>
+                                 <a style="position:relative;top:1.25em;margin-bottom:1.5em;" class="btn" href="#" id="btnCheckRFC"><span class="icon-question icon"></span> Consultar</a>
+                             </td>
+                           </tr>
+                           <tr>
+                             <th>CURP:</th>
+                             <td style="height:6em;">
+                                 <input type="text" name="txtCURP" id="txtCURP" required><br>
+                                 <a style="position:relative;top:1.25em;margin-bottom:1.5em;" class="btn" href="#" id="btnCheckCurp"><span class="icon-question icon"></span> Consultar</a>
+                             </td>                                                   
+                           </tr>
+                            <tr>
+                                <th>Nombre(s) Apellido(s):</th>
+                                <td>
+                                    <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre(s)"><br>
+                                    <input type="text" name="txtApePat" id="txtApePat" placeholder="Apellido Paterno"><br>
+                                    <input type="text" name="txtApeMat" id="txtApeMat" placeholder="Apellido Materno"><br>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Fecha de Nacimiento / Lugar de Nacimiento:</th>
+                                <td id="tdFechaNacimiento">
+                                    <select class="select" name="dia" id="dia">
+                                        <option value="dia">Día</option>
+                                    </select>
+                                    <select class="select" name="mes" id="mes">
+                                        <option value="mes">Mes</option>
+                                    </select>
+                                    <select class="select" name="ano" id="ano">
+                                        <option value="ano">Año</option>
+                                    </select><br>
+                                    <input type="text" name="txtLugarNacimiento" id="txtLugarNacimiento" placeholder="Lugar de Nacimiento"><br>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Sexo:</th>
+                                <td id="tdSexo">
+                                    <select class="select" name="sexo" id="sexo">
+                                        <option value="1">Masculino</option>
+                                        <option value="0">Femenino</option>
+                                    </select>
+                                </td>    
+                            </tr>
+                           <tr>
+                                <th>Teléfono:</th>
+                                <td><input type="number" name="txtTelefono" id="txtTelefono"></td>    
+                           </tr>
+                           <tr>
+                                <th>Correo Electrónico:</th>
+                                <td><input type="email" name="txtEmail" id="txtEmail"></td>    
+                            </tr>
+                            <tr>
+                                <th>Confirmar Correo Electrónico:</th>
+                                <td><input type="email" name="txtConfirmEmail" id="txtConfirmEmail"></td>    
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="height:3px;background:#fff;"></td>
+                            </tr>
+                            <tr>
+                                <th>Kit de Inscripción:</th>
+                                <td id="tdKit">
+                                    <div class="selectGde">
+                                        <select class="select" name="kit" id="kit">                                            
+                                        </select>
+                                    </div>
+                                </td>    
+                            </tr>
+                            <tr id="codigoAutorizacion" style="display:none;">
+                                <th>Código de Autorización:</th>
+                                <td><input type="text" name="txtCodigo" id="txtCodigo"></td>    
+                            </tr>
+                            <tr>
+                                <th>Método de envío:</th>
+                                <td id="tdMetodoEnvio">
+                                    <select class="select" name="metodoEnvio" id="metodoEnvio">
+                                        <option>Selecciona uno</option>
+                                    </select>
+                                </td>    
+                            </tr>
+                            <tr id="centroAutorizadoTr" style="display:none;">
+                                <th>Bodega:</th>
+                                <td id="tdCentroAutorizado" style="height:7em;">
+                                    <select class="select" name="centroAutorizado" id="centroAutorizado" style="top:0px;">
+                                        <option value="0">Seleccione</option>
+                                    </select><br>
+                                    <a style="position:relative;top:1em;margin-bottom:1em;" class="btn" id="btnDireccion">Dirección <span style="" class="icon-arrow-right icon-right"></span></a>
+                                </td>    
+                            </tr>
+                            <tr id="paqueteriaTr" style="display:none;">
+                                <th>Paqueterías:</th>
+                                <td id="tdPaqueteria">
+                                    <select class="select" name="paqueteria" id="paqueteria">
+                                    </select>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <th>Método de Pago:</th>
+                                <td id="tdMetodoPago">
+                                    <select class="select" name="metodoPago" id="metodoPago">
+                                    </select>
+                                </td>    
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="height:5px;background:#fff;"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background:#fff;">
+                                    <a class="btn" href="#" onclick="Href('suscriptores.html')"><span class="icon-arrow-left icon"></span> ANTERIOR</a>
+                                    <!--<a href="suscriptores3.html"   >SIGUIENTE -></a>-->
+                                    <a type="button" class="btn" id="btnSiguiente2" name="btnSiguiente2">SIGUIENTE <span class='icon-arrow-right icon-right'></span></a>
+                                </td>
+                            </tr>
+                         </tbody>
+                   </table>
+                </form>
+        
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+
+    </div>
+    
+   <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <!--<script type="text/javascript" src="js/suscriptores.js"></script>-->
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/validaciones.js"></script>
+    <script type="text/javascript" src="js/lib.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/combosSuscriptores.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/openWebBrowser.js"></script>-->
+    <script type="text/javascript">    
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu(); 
+
+            //Borra Historial del Botón back
+            if(history.forward(1))
+                location.replace(history.forward(1));
+                    
+            //Carga combo días
+            fillDay();
+            //Carga combo meses
+            fillMonth();
+            //Carga combo años
+            fillYear();
+
+
+            $('#btnCheckCurp').click(function(event) {
+                var ref = window.open('http://consultas.curp.gob.mx/CurpSP/', '_blank', 'location=yes');
+            });
+            $('#btnCheckRFC').click(function(event) {
+                var ref = window.open('http://www.curpyrfc.com.mx/t-www.tramitanet.gob.mx-curp', '_blank', 'location=yes');
+            });
+        
+    </script>
+    </body>
+</html>

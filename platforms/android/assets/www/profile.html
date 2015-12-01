@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" href="css/styleProfile.css" />
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">               
+
+        <title>Perfil</title>
+
+
+    </head>
+    <body>
+        <!-- Comienza página Welcome -->
+        <div>
+            
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <h2><span class="icon-profile"></span> Mi Perfil</h2>
+                <div class="menu_bar">
+                    <a href="#" class="bt-menu" id="showMenu"><span class="icon-menu"></span> Menu</a>
+                </div>
+            </div>
+
+            <!-- Contenido de la página -->
+            <div id="contenedor">
+                <div id="clear">
+                    <!--<table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Ocultar..." data-column-popup-theme="a">-->
+                    <table>
+                         <thead>
+                           <tr>
+                            <th colspan="2"><span class="icon-user"></span> Información Personal</th>
+                           </tr>
+                           <tr>
+                            <td colspan="2">Información General</td>
+                           </tr>
+                         </thead>
+                         <tbody id="generalInfo">
+                           <tr>
+                             <th><p>Fecha de Registro:</p></th>
+                             <td><p></p></td>
+                           </tr>
+                           <tr>
+                             <th><p>Patrocinador:</p></th>
+                             <td><p></p></td>                                                     
+                           </tr>
+                           <tr>
+                             <th><p>Nombre:</p></th>
+                             <td><p></p></td>
+                           </tr>
+                           <tr>
+                             <th><p>Alias:</p></th>
+                             <td><p></p></td>
+                           </tr>
+                           <tr>
+                             <th><p>Idioma:</p></th>
+                             <td><p></p></td>
+                           </tr>
+                           <tr>
+                             <th><p>E-mail:</p></th>
+                             <td><p></p></td>
+                           </tr>
+                         </tbody>
+                         <thead>
+                             <tr>
+                                 <td colspan="2">Información de Contacto</td>
+                             </tr>
+                         </thead>
+                         <tbody id="contactInfo">
+                            <tr>
+                                 <th><p>Teléfono:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                            <tr>
+                                 <th><p>Celular:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                            <tr>
+                                 <th><p>Fecha de Nacimiento:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                            <tr>
+                                 <th><p>Sexo:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                            <tr>
+                                 <th><p>Acceso a OVM y Página Personal:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                            <tr>
+                                 <th><p>Tipo de Miembro:</p></th>
+                                 <td><p></p></td>
+                            </tr>
+                         </tbody>
+                   </table>
+            
+                </div>
+            </div>        
+
+            <!-- Pié de página -->
+            <!--<div data-role="footer" style="text-align:center" data-theme="a" data-position="fixed">
+                Copyright © 2015 RM International Services S.A. de C.V.
+            </div>-->
+
+        </div>
+
+    <div id="deviceready" style="display: none">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+    
+    <!-- ********  MENÚ  ******** -->
+    <header>
+        <nav id="menu"></nav>
+    </header>
+
+    <!--Mascara que se muestra cuando se abre menú-->
+    <section id="mascara"></section>
+
+    <!--Macara que se muestra  mientras se cargan todos los elementos de la página-->
+    <div id="mascaraAJAX"></div>
+
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/connect.js"></script>
+    <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //Carga imagen ajax
+            showWaitLoader('mascaraAJAX');
+            $('#mascaraAJAX').fadeIn(300);
+
+
+            var userId = localStorage.getItem('userIdLocal');
+            //var userId = 11;
+            /*Devuelve conjunto de datos para cargar información de perfil del Usuario*/
+            queryData('USP_VBC_GET_USER_PROFILE_INFO', ['integer', userId], fillProfile);
+
+            function fillProfile(dataSet){
+                var rec = dataSet[0];
+                var text = '';
+
+                console.log(rec);
+
+                //Se cargan todos los datos del modulo de información general a su tbody correspondiente
+                $('table tbody#generalInfo tr:nth-child(1) td p').append(susbsDates(rec['dateCreated']));
+                $('table tbody#generalInfo tr:nth-child(2) td p').append(rec['referralId']+ " " +rec['referralName']);
+                $('table tbody#generalInfo tr:nth-child(3) td p').append(rec['customerName']);
+                $('table tbody#generalInfo tr:nth-child(4) td p').append(rec['alias']);
+                if(rec['languageId'] == 1){
+                    $('table tbody#generalInfo tr:nth-child(5) td p').append("Español");
+                }else{
+                    $('table tbody#generalInfo tr:nth-child(5) td p').append("English");
+                }
+                $('table tbody#generalInfo tr:nth-child(6) td p').append(rec['email']);
+
+                //Se cargan todos los datos del modulo de información de contacto a su tbody correspondiente
+                $('table tbody#contactInfo tr:nth-child(1) td p').append(rec['homePhone']);
+                $('table tbody#contactInfo tr:nth-child(2) td p').append(rec['cellPhone']);
+                $('table tbody#contactInfo tr:nth-child(3) td p').append(susbsDates(rec['birthDate']));
+                if(rec['isMale'] == 1){
+                    $('table tbody#contactInfo tr:nth-child(4) td p').append("Masculino");
+                }else{
+                    $('table tbody#contactInfo tr:nth-child(4) td p').append("Femenino");
+                }
+                if(rec['isActive'] == 1){
+                    $('table tbody#contactInfo tr:nth-child(5) td p').append("Sí");
+                }else{
+                    $('table tbody#contactInfo tr:nth-child(5) td p').append("No");
+                }
+                $('table tbody#contactInfo tr:nth-child(6) td p').append(rec['userTypeDescr']);
+
+                
+
+                //oculta imagen ajax
+                $('#mascaraAJAX').fadeOut(300);
+                $('#mascaraAJAX').html('');
+            }
+
+            function susbsDates(date){
+                var dateSubs = date;
+                dateSubs = dateSubs.substr(0,10);
+                return dateSubs;
+            }
+
+    </script>
+    </body>
+</html>

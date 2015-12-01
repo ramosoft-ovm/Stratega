@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleMonedero.css">
+
+        <title>Movimientos</title>
+        <script type="text/javascript" src="js/connect.js"></script>
+    </head>
+    <body>
+        <div id="cart">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="welcome.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-stats-dots"></span> Transacciones</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+            
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->                    
+                <div id="catalogo">
+                    <div>
+                        <div>
+                            <label for="" id="lbl_titulo">Periodos para </label><br /><br />
+                            <select id="cmb_periodos" class="category">
+                                <!-- Desde la base -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <table id="tbl_balance">
+                        <thead>
+                            <th>Tipo de transacción</th>
+                            <th>Referencia</th>
+                            <th>Monto</th>
+                        </thead>
+                        <tbody>
+                            <!-- Desde la base -->
+                            
+                            <!--tr>
+                                <td colspan="2" style="text-align: right">Balance del periodo</td>
+                                <td style="text-align: right">100</td>
+                            </tr-->
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+
+        <div class="fullscreen" id="div_detalles">
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //-------------------------------------------------------
+            document.addEventListener('DOMContentLoaded', function(){
+                //Variables globales
+                var userId = localStorage.getItem('userIdLocal');
+                //userId = 12;
+                //---------------------------------------------
+                var cmbPeriodos = document.getElementById('cmb_periodos');
+                var lblTitulo = document.getElementById('lbl_titulo');
+                var tblBalance = document.getElementById('tbl_balance');
+                //----------------------------------------------
+                var comercio = parseInt(getByURL()['comercio']);
+
+                //Carga tipo de comercio
+                if (typeof comercio !== 'undefined' && comercio !== '') {
+                    switch(comercio){
+                        case 1:
+                            lblTitulo.innerHTML += 'Comercio Tipo 1';
+                            break;
+                        case 2:
+                            lblTitulo.innerHTML += 'Supermercado';
+                            break;
+                        case 3:
+                            lblTitulo.innerHTML += 'Gasolineras';
+                            break;
+                        case 4:
+                            lblTitulo.innerHTML += 'Otros Comercios';
+                            break;
+                    }
+                }
+
+                //Carga imagen ajax para carrito compras catalogo
+                showWaitLoader('mascaraAJAX');
+                $('#mascaraAJAX').fadeIn(300);
+
+                ///////////////////////////////////////////////
+                /******** Carga combobox de periodos *********/
+                //-----------------------
+                var argumentos = [
+                    'integer','5', //Flag
+                    'integer','0' //PN_ERROR
+                ];
+                //Carga combobox periodos
+                queryData("USP_VBC_GET_PERIODS", argumentos, periodos);
+                function periodos(dataSet) {
+                    var rec = dataSet[0];
+                    var recT = dataSet.length;
+                    for (var idx = 0; idx < recT; idx++) {
+                        rec = dataSet[idx];
+                        var options = document.createElement('option');
+                        options.text = rec['description'];
+                        options.value = rec['periodId'];
+                        cmbPeriodos.options.add(options);
+                    }
+
+                    //Evento change de combobox periodo
+                    cmbPeriodos.addEventListener('change', function(event) {
+                        //Carga imagen ajax para carrito compras catalogo
+                        showWaitLoader('mascaraAJAX');
+                        $('#mascaraAJAX').fadeIn(300);
+                        //------------------------
+                        event.target.blur();
+                        var argumentos = [
+                            'integer',userId,//Usuario
+                            'integer',cmbPeriodos.value,//Periodo
+                            'integer',comercio,//Comercio
+                            'integer','0'//PN_ERROR
+                        ]
+                        queryData("USP_VBC_GET_WALLET_BALANCE_HIST", argumentos, balance);
+                    }, false);
+
+                    ///////////////////////////////////////////
+                    /******** Llena tabla de balance *********/
+                    //-----------------
+                    var argumentos = [
+                        'integer',userId,//Usuario
+                        'integer',cmbPeriodos.value,//Periodo
+                        'integer',comercio,//Comercio
+                        'integer','0'//PN_ERROR
+                    ]
+                    //Si hay un periodID por get, entonces lo carga.
+                    if (typeof getByURL()['periodID'] != 'undefined') {
+                        argumentos[3] = getByURL()['periodID'];
+                        cmbPeriodos.value = getByURL()['periodID'];
+                        console.log(getByURL()['periodID']);
+                    };
+                    queryData("USP_VBC_GET_WALLET_BALANCE_HIST", argumentos, balance);
+                    function balance(dataSet) {
+                        var rec = dataSet[0];
+                        var text = '';
+                        var iniBalance = 0;
+                        if (typeof rec == 'undefined') {
+                            text = '<tr>';
+                            text = '<td colspan="3">No hay Movimientos que mostrar</td>';
+                            text += '</tr>';
+                            //Imprime tabla
+                            tblBalance.childNodes[3].innerHTML = text;
+                        }
+                        else {
+                            var recT = dataSet.length;
+                            //-Muestra balance inicial
+                            text = '<tr class="tbl_balance">';
+                            text += '<td colspan="2">Balance Inicial en fecha <span class="iniDate"></span></td>';
+                            text += '<td id="initBalance">$</td>';
+                            text += '</tr>';
+                            //-Muestra transacciones
+                            for (var idx = 0; idx < recT; idx++) {
+                                rec = dataSet[idx];
+                                text += '<tr>';
+                                text += '<td>'+rec['walletTransactionType']+'</td>';
+                                text += '<td><a class="btn-tbl" href="monedero_movimientos_detalles.html?datos='+
+                                    rec['walletTransactionType']+'-:-'+
+                                    rec['walletBalanceId']+'-:-'+
+                                    (rec['amount']).toFixed(2)+'-:-'+
+                                    rec['period']+'-:-'+
+                                    rec['walletType']+'-:-'+
+                                    rec['comments']+'-:-'+
+                                    rec['dateCreated'].substring(0, 10)+'-:-'+
+                                    rec['senderUserAlias']+'-:-'+rec['getterUserAlias']+'&periodID='+cmbPeriodos.value+'&comercio='+comercio+'" >'+rec['walletBalanceId']+'</a></td>';
+                                text += '<td>$'+(rec['amount']).toFixed(2)+'</td>';
+                                text += '</tr>';
+                                iniBalance = rec['iniBalance'];
+                                /*'+
+                                    rec['walletTransactionType']+'-:-'+
+                                    rec['walletBalanceId']+'-:-'+
+                                    (rec['amount']).toFixed(2)+'-:-'+
+                                    rec['period']+'-:-'+
+                                    rec['walletType']+'-:-'+
+                                    rec['comments']+'-:-'+
+                                    rec['dateCreated'].substring(0, 10)+'-:-'+
+                                    rec['senderUserAlias']+'*/
+                            }
+                            //-Muestra Balance final
+                            text += '<tr class="tbl_balance">';
+                            text += '<td colspan="2">Balance Final en fecha '+rec['endDate']+'</td>';
+                            text += '<td>$'+(rec['endBalance']).toFixed(2)+'</td>';
+                            text += '</tr>';
+                            //Almacena todos los datos en un span para luego enviarlos.
+                            text += '<span id="lbl_arreglo">'+
+                                    rec['walletTransactionType']+'-:-'+
+                                    rec['walletBalanceId']+'-:-'+
+                                    (rec['amount']).toFixed(2)+'-:-'+
+                                    rec['period']+'-:-'+
+                                    rec['walletType']+'-:-'+
+                                    rec['comments']+'-:-'+
+                                    rec['dateCreated'].substring(0, 10)+'-:-'+
+                                    rec['senderUserAlias']+'</span>';
+                        
+                            //Imprime tabla
+                            tblBalance.childNodes[3].innerHTML = text;
+                            document.querySelector('.iniDate').innerHTML=rec['iniDate'];
+                            //Imprime el balance inicial
+                            var inibalance = document.querySelector('#initBalance');
+                            inibalance.innerHTML = (iniBalance).toFixed(2);
+                            Debug(rec);
+                        }
+                        //Oculta imágen AJAX
+                        $('#mascaraAJAX').fadeOut(300);
+                        $('#mascaraAJAX').html('');
+                    }
+                }
+            });
+            
+            //Functión que responde al link para detalles
+            function detalles(event) {
+                var cmbPeriodos = document.getElementById('cmb_periodos')
+                var divDetalles = document.getElementById('div_detalles');
+
+                event.preventDefault();
+                var referencia = event.target.text;
+                var comercio = parseInt(getByURL()['comercio']);
+                var lblArreglo = document.getElementById('lbl_arreglo');
+                /*divDetalles.style.width = '100%';
+                divDetalles.style.height = '100%';
+                divDetalles.style.position = 'fixed';
+                divDetalles.style.zIndex = '11000';
+                divDetalles.style.top = '0';
+                divDetalles.innerHTML = '<object style="padding: 0; margin: 0" width="100%" height="100%" type="text/html" data="monedero_movimientos_detalles.html?comercio='+comercio+'&datos='+lblArreglo.innerHTML+'&periodID='+cmbPeriodos.value+'" ></object>';*/
+                location.href = 'monedero_movimientos_detalles.html?comercio='+comercio+'&datos='+lblArreglo.innerHTML+'&periodID='+cmbPeriodos.value;
+            }
+        </script>
+    </body>
+</html>

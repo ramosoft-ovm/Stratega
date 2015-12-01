@@ -1,0 +1,15 @@
+<script>
+    menu.cargarUsuario();
+    menu.compararRuta();
+</script>
+<ul>
+    <li id="etiquetaUsuario"><img src="img/logo-menu.png" width="200" height="100" alt=""></li>
+    <li id="active-welcome"><a onclick="menu.welcome()" href="#"><span class="icon-home3"></span>Inicio</a></li>
+    <li id="active-profile"><a onclick="menu.profile()" href="#"><span class="icon-user" id="loadUsernameLocal"></span></a></li>
+    <li id="active-transferencias"><a onclick="menu.transferencias()" href="#"><span class="icon-share"></span>Transferencias</a></li>
+    <li id="active-carrito"><a onclick="menu.carrito()" href="#"><span class="icon-cart"></span>Levantar Pedido</a></li>
+    <li id="active-suscriptores"><a onclick="menu.suscriptores()" href="#"><span class="icon-user-plus"></span>Inscripciones</a></li>
+    <li id="active-notificaciones"><a onclick="menu.notificaciones()" href="#"><span class="icon-mail2"></span>Notificaciones</a></li>
+    <li id="active-visorDeArbol"><a onclick="menu.visorDeArbol()" href="#"><span class="icon-tree"></span>Visor de Arbol</a></li>
+    <li id="active-logout"><a onclick="app.showConfirmLogout()" href="#"><span class="icon-exit"></span>Cerrar Sesión</a></li>
+</ul>

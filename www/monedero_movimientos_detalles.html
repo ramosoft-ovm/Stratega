@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleMonedero.css">
+
+        <title>Detalles de movimiento</title>
+        <script type="text/javascript" src="js/lib.js"></script>
+    </head>
+    <body>
+        <div id="cart">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="monedero_movimientos.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-stats-bars"></span> Detalles de Transacción</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+            
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->                    
+                <div id="catalogo">
+                    <a href="#" class="btn" id="btn_regresar"><span class="icon-arrow-left icon"></span> Regresar</a><br /><br />
+                    <table id="tbl_detalles">
+                        <thead>
+                            <th colspan="2">Movimiento</th>
+                        </thead>
+                        <tbody id="balance">
+                            <!-- Desde la base -->
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+
+            //------------------------------------
+            document.addEventListener('DOMContentLoaded', function() {
+                //variables globales
+                var tblDetalles = document.getElementById('tbl_detalles');
+                var btnRegresar = document.getElementById('btn_regresar');
+                //------------------------------
+                var datos = getByURL()['datos'];
+                var comercio = getByURL()['comercio'];
+                var periodID = getByURL()['periodID'];
+
+                //Guarda datos en un arreglo
+                datos = datos.split('-:-');
+                datosT = datos.length;
+
+                //Carga tabla con detalles de la transacción
+                var text = '';
+                //Tipo de transacciones
+                text += '<tr>';
+                text += '<th width="40%">Tipo de transacción</th>';
+                text += '<td>'+datos[0]+'</td>';
+                text += '</tr>';
+                //Número de referencia
+                text += '<tr>';
+                text += '<th>Referencia</th>';
+                text += '<td>'+datos[1]+'</td>';
+                text += '</tr>';
+                //Monto del movimiento
+                text += '<tr>';
+                text += '<th>Monto</th>';
+                text += '<td>$'+datos[2]+'</td>';
+                text += '</tr>';
+                //Depósito por comisiones proviene de plataforma mlm
+                if (datos[0] === 'Deposito De Comisiones') {
+                    text += '<tr>';
+                    text += '<th>Proveniente de</th>';
+                    text += '<td>Plataforma MLM</td>';
+                    text += '</tr>';
+                }
+                //Si viene como NO ALIAS no muestra nada
+                else if (datos[7] !== 'NO ALIAS') {
+                    text += '<tr>';
+                    text += '<th>Usuario que envía</th>';
+                    text += '<td>'+datos[7]+'</td>';
+                    text += '</tr>';
+                }
+                if (datos[8] !== 'NO ALIAS') {
+                    text += '<tr>';
+                    text += '<th>Usuario que recibe</th>';
+                    text += '<td>'+datos[8]+'</td>';
+                    text += '</tr>';
+                }
+                //else if (typeof) {};
+                //Periodo
+                text += '<tr>';
+                text += '<th>Periodo</th>';
+                text += '<td>'+datos[3]+'</td>';
+                text += '</tr>';
+                //Comercio
+                text += '<tr>';
+                text += '<th>Comercio</th>';
+                text += '<td>'+datos[4]+'</td>';
+                text += '</tr>';
+                //Comentarios
+                text += '<tr>';
+                text += '<th>Comentarios</th>';
+                text += '<td>'+datos[5]+'</td>';
+                text += '</tr>';
+                //Fecha de transacción
+                text += '<tr>';
+                text += '<th>Fecha de transacción</th>';
+                text += '<td>'+datos[6]+'</td>';
+                text += '</tr>';
+                //Imprime datos
+                tblDetalles.childNodes[3].innerHTML = text;
+
+                //Evento click del botón regresar
+                btnRegresar.addEventListener('click', function() {
+                    location.href = 'monedero_movimientos.html?comercio='+comercio+'&periodID='+periodID;
+                }, false);
+            });
+        </script>
+    </body>
+</html>

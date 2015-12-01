@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">     
+        <link rel="stylesheet" type="text/css" href="css/styleVolumenMovil.css"> 
+        <title>Detalles</title>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript" src="js/connect.js">
+            //queryData(STORED_PROCEDURE, ['integer','1','string','abc','',1], function)
+        </script>
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            //////////////////////////////////////////////////////
+            /********  Imprime información del usuario **********/
+            var name=getByURL()['name'];
+            var id = getByURL()['id'];
+            var periodo = getByURL()['period'];
+            var dateCreated = getByURL()['dateCreated'];
+            var pd = getByURL()['pd'];
+            var personalVolume = getByURL()['personalVolume'];
+            var commValue = getByURL()['CommValue'];
+
+            addTd('name', name);
+            addTd('pd', pd);
+            addTd('dateCreated', dateCreated);
+            addTd('personalVolume', personalVolume);
+            addTd('personalCommValue', commValue);
+
+            function addTd(id, valor) {
+                document.getElementById(id).innerHTML = valor;
+            }
+            document.getElementById('regresar').addEventListener('click', function(){
+                location.href="volumen_movil.html?period="+periodo;
+            },false);
+        });
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="volumen_movil.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-user"></span> Volumen movil detalles</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <h3 id="name"><!-- Desde la base --><h3>
+                <table>
+                    <thead>
+                            <th>P. Directos</th>
+                            <th>Inscripción</th>
+                            <th>Volumen Personal</th>
+                            <th>Acreditable</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="pd"><!-- Desde la base --></td>
+                            <td id="dateCreated"><!-- Desde la base --></td>
+                            <td id="personalVolume"><!-- Desde la base --></td>
+                            <td id="personalCommValue"><!-- Desde la base --></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align:center; margin: 10px 0"><a href="#" id="regresar" class="btn"><span class="icon-arrow-left icon"></span> Regresar</a></div>
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+            <!-- ***************************************************** -->
+            </div>
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+        
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+
+        <script type="text/javascript"> 
+                //El registro al servicio de google lo hacemos automáticamente
+                app.initialize();            
+                menu.cargarMenu();
+        </script>
+    </body>
+</html>

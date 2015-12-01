@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximun-scale=no">
+
+        <link rel="stylesheet" type="text/css" href="css/styleMenu.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+        <link rel="stylesheet" type="text/css" href="css/styleCarritoCompras.css">
+
+        <title>Panel de Control</title>
+        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript" src="js/connect.js">
+            //queryData(STORED_PROCEDURE, ['integer','1','string','abc','',1], function, numeroTabla)
+        </script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded',function() {
+                //Carga imagen ajax
+                showWaitLoader('mascaraAJAX');
+                $('#mascaraAJAX').fadeIn(300);
+                ///////////////////////////////////////////////////////
+                /****** Llena tabla con detalles del producto ********/
+                queryData('USP_VBC_GET_ITEMS_DETAIL', ['string',getByURL()['code'],'integer','','integer','4'], detail);
+                function detail(dataSet) {
+                    var rec = dataSet[0];
+                    var img = '';
+                    img = rec['itemPicture']?'<img src="' +domain+ '/image/' +rec['itemPicture']+ '" />':'<p>Imagen no disponible</p>';
+                    set('codigo',rec['itemCode']);
+                    set('puntos',rec['bv']);
+                    set('vconsumible',rec['cv']);
+                    set('precio','$'+getByURL()['price']);
+                    set('descripcion',rec['itemName']);
+                    set('imagen', img);
+
+                    function set(id, html) {
+                        document.getElementById(id).innerHTML = html;
+                    }
+                    //oculta imagen ajax
+                    $('#mascaraAJAX').fadeOut(300);
+                    $('#mascaraAJAX').html('');
+                }
+            });
+            function regresar() {
+                var origen = getByURL()['origen'];
+                if (origen == 'catalogo') {
+                    location.href = "carrito_compras_catalogo.html?categoria=" + getByURL()['categoria'];
+                }
+                else if(origen == 'regalos' || origen == 'promocion') {
+                    window.history.back();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <!-- Encabezado -->
+            <div class="encabezado">
+                <div>
+                    <div class="back_bar">
+                        <a href="carrito_compras_catalogo.html" class="bt-menu" id="showMenu"> <span class="icon-arrow-left" style="color: #b0232a"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+                <h2><span class="icon-price-tag"></span> Producto</h2>
+                <div>
+                    <div class="menu_bar">
+                        <a href="#" class="bt-menu" id="showMenu"> <span class="icon-menu"></span> </a>
+                    </div><!--end menu_bar-->
+                </div>
+            </div><!--end encabezado-->
+            <div>
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <div id="detalles">
+                    <a href="#" onClick="regresar()" class="btn"><span class="icon-arrow-left icon"></span> Regresar</a><br /><br />
+                    <table id="carrito-detalles">
+                        <thead>
+                            <th>Código</th>
+                            <th>Puntos</th>
+                            <th>V. Consumible</th>
+                            <th>Precio</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="codigo"><!-- desde la base --></td>
+                                <td id="puntos"><!-- desde la base --></td>
+                                <td id="vconsumible"><!-- desde la base --></td>
+                                <td id="precio"><!-- desde la base --></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <table id="carrito-especificaciones" cellspacing="0">
+                        <thead>
+                                <th id="descripcion"><!-- desde la base --></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="imagen" style="color: black"><!-- desde la base --></td>
+                            </tr>
+                            <!--tr>
+                                <td style="text-align: left">Cómo usarlo: <span id="comoUsarlo">< desde la base ></span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">Ingredientes: <span id="ingredientes">< desde la base ></span></td>
+                            </tr-->
+                        </tbody>
+                    </table>                    
+                </div>
+
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+                <!-- ***************************************************** -->
+            </div>
+
+        </div>
+
+        <div id="deviceready" style="display: none">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+    
+        <!-- ********  MENÚ  ******** -->
+        <header>
+            <nav id="menu"></nav>
+        </header>
+        <section id="mascara"></section>
+        <div id="mascaraAJAX"></div>
+    
+        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/classMenu.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/logout.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/notificaciones.js"></script>
+        <script type="text/javascript"> 
+            //El registro al servicio de google lo hacemos automáticamente
+            app.initialize();            
+            menu.cargarMenu();
+        </script>
+    </body>
+</html>

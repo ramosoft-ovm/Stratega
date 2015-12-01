@@ -1,0 +1,294 @@
+h2{
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.8em;
+}
+
+.menu_bar {
+	top: 25px !important;
+}
+.back_bar {
+	top: 28px !important;
+	position: absolute !important;
+	z-index: 10001 !important;
+}
+
+.encabezado{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #b0232a;
+}
+
+/*.menu_bar {
+	top: 15px !important;
+}*/
+#barra{
+	width: 100%;
+	background-color:#F8F8F8;
+	top: 78px;
+	position: absolute;
+	left:0;
+	text-align: center;
+}
+select{
+	margin: 0 auto;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 5px 50px;
+	display: inline-block;
+	margin-bottom: 20px;
+	top:15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+select:hover{
+	background-color: #ddd;
+}
+
+.category {
+	background: #666;
+	color: #fff;
+}
+
+.category:hover {
+	background: #333;
+}
+
+.btn {
+	background: #B24846;
+	color: white;
+	padding: 5px 10px;
+	font-size: 20px;
+	border: none;
+	text-decoration: none;
+}
+.btn-tbl {
+	background: #B24846;
+	color: white;
+	padding: 3px 10px;
+	font-size: 18px;
+	border: none;
+	text-decoration: none;
+}
+.sb-search-input {
+	padding: 7px 0 7px 5px;
+	width: 130px;
+	height: 13px;
+}
+.cantidad {
+	padding: 5px 0 5px 5px;
+}
+.comprar {
+	padding: 8px 0 8px 5px;
+	background: #B24846;
+	color: white;
+	padding: 5px 10px;
+	font-size: 17px;
+	border: none;
+	font-weight: normal;
+	text-decoration: none;
+}
+#catalogo {
+	padding-top: 60px;
+	margin: 0 auto;
+}
+table {
+	margin: 0 auto;
+	margin-bottom: 8px;
+	background: white;
+	width:95%;
+	border-collapse: separate;
+	border-spacing: .5em;
+}
+
+table tbody tr th {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: left;
+	background: #aeadab;
+	text-shadow: 1px 1px 3px rgba(0,0,0,.7);
+	padding: 1.5%;
+	color: white;
+}
+table thead tr th {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: center;
+	background: #B24846;
+	padding: 1.5%;
+	color: white;
+}
+table tbody tr td {
+	background: #ddd;
+	color: #000;
+	padding: 1.5%;
+	text-align: center;
+}
+.marginTable {
+	margin-top: 5px;
+}
+/************ Carrito compras regalos ***************/
+.notas {
+	  width: 90%;
+	  margin: 0 auto;
+	  border-spacing: .5em;
+	  padding: 1.5%;
+	  background: #B24846;
+	  border: 5px solid white;
+	  color: white;
+}
+/************ Carrito compras detalles **************/
+
+#page {
+	padding-top: 100px;
+}
+/*********** Carrito Compras **************/
+#cart {
+	padding-top: 100px;
+}
+.icon {
+	background: rgba(0,0,0,0.2);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-left: -15px;
+}
+.btn {
+	padding: 10px 15px;
+	background: #B24846;
+	color: #fff;
+	border: none;
+	text-decoration: none;
+	font-size: inherit;
+}
+.icon-right {
+	background: rgba(0,0,0,0.08);
+	width: 60px;
+	padding: 9px 9px 11px 10px;
+	margin-right: -15px;
+	margin-left: 3px;
+}
+
+.indicador {
+	padding: 5px 10px;
+	padding-bottom: 5px;
+	color: white;
+	text-align: center;
+	padding-bottom: 10;
+}
+.indicadores {
+	text-align: center;
+	padding-top: 15px;
+}
+
+/******** Carrito compras generar **********/
+.titulos {
+	text-align: right !important;
+}
+.titulos ~ td {
+	text-align: left !important;
+}
+#cargo_manejo {
+	text-align: right !important;
+}
+#gran_total {
+	text-align: right !important;
+}
+/* * */
+@media (max-width: 640px) {
+	h2{
+		/*margin-left: 3em;*/
+		font-size: 1.2em;
+	}
+
+	.menu_bar {
+		top: 15px !important;
+	}
+	.back_bar {
+		top: 15px !important;
+	}
+}
+
+@media (max-width: 480px) {
+	table {
+		margin: 0 auto;
+		margin-bottom: 8px;
+		background: white;
+		width:95%;
+		font-size: 1.1em;
+		border-collapse: separate;
+		border-spacing: .3em;
+	}
+	table tbody tr th {
+		padding-left: 5%;
+		padding-right: 5%;
+		text-align: left;
+		background: #aeadab;
+		padding: 1.5%;
+		color: white;
+		font-size: 15px
+	}
+	table thead tr th {
+		padding-left: 5%;
+		padding-right: 5%;
+		text-align: center;
+		background: #aeadab;
+		padding: 1.5%;
+		color: white;
+		font-size: 15px
+	}
+	table tbody tr td {
+		background: #ddd;
+		color: #000;
+		padding: 1.5%;
+		text-align: center;
+		font-size: 15px
+	}
+	.icon {
+		background: rgba(0,0,0,0.2);
+		width: 60px;
+		padding-top: 9px;
+		padding-right: 9px;
+		padding-left: 10px;
+		padding-bottom: 8px;
+		margin-left: -15px;
+		font-size: 12px;
+	}
+	.btn {
+		padding: 7px 15px;
+		background: #B24846;
+		color: #fff;
+		border: none;
+		text-decoration: none;
+		font-size: 14px;
+	}
+	.menu_bar {
+		top: 15px !important;
+	}
+	.back_bar {
+		top: 15px !important;
+	}
+	.btn-tbl {
+		padding: 2px 10px;
+		font-size: 15px;
+	}
+	/******** Carrito compras levantar **********/
+	.form > tbody tr td select {
+		padding: 5px 0 5px 0;
+		padding-left: 0px;
+		font-size: 12px;
+	}
+}

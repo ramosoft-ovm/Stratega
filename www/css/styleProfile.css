@@ -1,0 +1,96 @@
+h2{
+	color: #ffffff;
+	margin-left: .7em;
+	text-align: left;
+	font-size: 1.2em;
+}
+
+#contenedor{
+	margin: auto;
+	margin-top: 4.5em;
+}
+
+.encabezado{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #b0232a;
+}
+
+.menu_bar {
+	top: 15px !important;
+}
+
+
+table{
+	background: white;
+	width: 100%;
+	height: 100%;
+	font-size: 1.1em;
+	color: #ffffff;
+	text-align: center;
+}
+
+table thead tr th{
+	background: #B24846;
+	text-align: left;
+	padding: 1.5%;
+	font-size: 1.3em; 
+}
+
+table thead tr td{
+	color: rgba(0,0,0,1);
+	font-weight: bold;
+	text-align: center;
+	padding: 1.5%;
+	font-size: 1.1em; 
+}
+
+table tbody{
+	color: gray;
+}
+
+table tbody tr th{
+	width: 50%;
+	font-size: .8em;
+	text-align: right;
+	padding: 0% 1%;
+}
+
+table tbody tr td{
+	width: 50%;
+	font-size: .8em;
+	text-align: left;
+	padding: 0% 1%;
+}
+
+@media (min-width: 640px) {
+
+	#contenedor{
+		width: 80%;
+		margin-top: 6.5em;
+	}
+
+	h2{
+		margin-left: 2em;
+		font-size: 1.8em;
+	}
+
+	.menu_bar {
+		top: 25px !important;
+	}
+	
+}
+
+@media (min-width: 768px) {
+	
+	#contenedor{
+		width: 70%;
+	}
+
+}
+
+@media (min-width: 1024px) {
+	
+}

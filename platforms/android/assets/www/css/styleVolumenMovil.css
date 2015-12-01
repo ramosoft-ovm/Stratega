@@ -1,0 +1,185 @@
+h2{
+	color: #ffffff;
+	margin-left: .7em;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.menu_bar {
+	top: 15px !important;
+}
+.back_bar {
+	top: 15px !important;
+	position: absolute !important;
+	z-index: 10001 !important;
+}
+.ocultar {
+    display: none;
+}
+.mostrar {
+    display: block;
+}
+.graphite li {
+    list-style: none;
+}
+.graphite a {
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: black;
+}
+
+#periodo{
+	margin-top: 7em;
+	margin-left: 2%;
+	margin-right: 2%;	
+}
+
+.graphite{
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 1.5em;
+	text-align: left;
+}
+
+.encabezado{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: #b0232a;
+}
+
+.graphite ul{
+	background: white;
+}
+
+.estilo{
+	background-color: #B24846;
+	padding-top: 1%;
+}
+
+.estiloA{
+	color: white !important;
+	font-weight: bold;
+}
+
+.espacio{
+	margin-right: 5px;
+}
+
+@media (min-width: 640px) {
+
+	#contenedor{
+		width: 80%;
+		margin-top: 6.5em;
+	}
+
+	h2{
+		margin-left: 2em;
+		font-size: 1.8em;
+	}
+
+	.menu_bar {
+		top: 25px !important;
+	}
+	.back_bar {
+		top: 28px !important;
+	}
+	
+}
+
+@media (min-width: 768px) {
+	
+	#contenedor{
+		width: 70%;
+	}
+
+}
+
+@media (min-width: 1024px) {
+	
+}
+
+select{
+	margin: 0 auto;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 5px 50px;
+	display: inline-block;
+	margin-bottom: 20px;
+	top:15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+select:hover{
+	background-color: #ddd;
+}
+
+.category {
+	background: #666;
+	color: #fff;
+}
+
+.category:hover {
+	background: #333;
+}
+
+/*** Detalles *****/
+table {
+	margin: 0 auto;
+	margin-bottom: 8px;
+	margin-top: 20px;
+	background: white;
+	width:95%;
+	font-size: 1.1em;
+	border-collapse: separate;
+	border-spacing: .3em;
+}
+table thead th {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: center;
+	background: #B24846;
+	padding: 1.5%;
+	color: white;
+	font-size: 15px;
+}
+table tbody tr td {
+	background: #ddd;
+	color: #000;
+	padding: 1.5%;
+	text-align: center;
+	font-size: 15px;
+}
+.icon {
+	background: rgba(0,0,0,0.2);
+	width: 60px;
+	padding: 8px 9px 9px 9px;
+	margin-left: -13px;
+}
+.btn {
+	padding: 8px 12px;
+	background: #B24846;
+	color: #fff;
+	border: none;
+	text-decoration: none;
+	font-size: 15px;
+}
+#page {
+	padding-top: 100px;
+}
+#name {
+	text-align: center
+}

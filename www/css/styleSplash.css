@@ -1,0 +1,62 @@
+html,
+body {
+    height: 100%;
+
+}
+
+body{font-family: 'Arimo', sans-serif;
+	font-weight:400;
+	font-size:1em;
+	margin:0;
+	padding:0;
+	background: rgba(254,254,254,1);
+	background: -moz-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 28%, rgba(229,229,229,1) 66%, rgba(224,225,227,1) 86%, rgba(229,229,229,1) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(254,254,254,1)), color-stop(28%, rgba(254,254,254,1)), color-stop(66%, rgba(229,229,229,1)), color-stop(86%, rgba		(224,225,227,1)), color-stop(100%, rgba(229,229,229,1)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 28%, rgba(229,229,229,1) 66%, rgba(224,225,227,1) 86%, rgba(229,229,229,1) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 28%, rgba(229,229,229,1) 66%, rgba(224,225,227,1) 86%, rgba(229,229,229,1) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 28%, rgba(229,229,229,1) 66%, rgba(224,225,227,1) 86%, rgba(229,229,229,1) 100%);
+	background: radial-gradient(ellipse at center, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 28%, rgba(229,229,229,1) 66%, rgba(224,225,227,1) 86%, rgba(229,229,229,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e5e5e5', GradientType=1 );
+}
+ 
+ 
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.encabezado{	
+	width: 350px;
+	height:180px;
+	top: 40%;
+	left: 50%;
+	margin-top: -90px;
+	margin-left: -175px;
+	position:absolute;
+	float:left;
+	background: url(../img/logo.png) no-repeat center;
+	background-size: 350px 180px;
+}
+
+.sub-encabezado{
+	width:100%;
+}
+
+h1{color:#b0232a; text-align:center; margin-top:210px; }
+h2{color:#b0232a; text-align:center; margin:0; }
+
+
+#footer {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+	color:rgb(204,204,204);
+	padding:0; 
+	margin:0;
+}
+
+strong{ color:rgb(204,204,204);}
+p a{ color:#F17D24 ; text-decoration:none;}
+p{ font-size:.9em; text-align:center; padding:8px; margin:0}
